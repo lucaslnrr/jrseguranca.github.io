@@ -1,0 +1,19 @@
+﻿/* JR Segurança – brand palette overrides */
+:root {
+  --accent: #2f994a;
+  --accent-dark: #1f6d34;
+  --accent-soft: rgba(47, 153, 74, 0.12);
+  --primary: #142130;
+  --secondary: #415065;
+  --muted: #748299;
+  --surface: #ffffff;
+  --surface-alt: #f4f9fb;
+  --line: #dfe7f1;
+  --shadow-soft: 0 24px 60px rgba(15, 54, 86, 0.08);
+  --shadow-card: 0 28px 70px rgba(17, 44, 73, 0.08);
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+}

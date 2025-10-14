@@ -1,0 +1,15 @@
+{
+  "name": "jrseguranca",
+  "version": "1.0.0",
+  "description": "Layout responsivo e moderno inspirado na estrutura do site solicitado, com código e conteúdo originais. Use este projeto como base para personalizar cores, textos e imagens da sua empresa.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pdf-parse": "^2.3.5"
+  }
+}
