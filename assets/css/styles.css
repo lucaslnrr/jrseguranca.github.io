@@ -1,4 +1,39 @@
-﻿.services__list {
+﻿.hero--upgrade {
+  background: linear-gradient(120deg, #eaf4fb 0%, #f7fafd 100%);
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px rgba(18,52,92,0.10);
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+.hero__title {
+  color: #1a2a3a;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.hero__highlight {
+  color: #19c0d7;
+  background: linear-gradient(90deg, #19c0d7 0%, #5be9b9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-weight: 700;
+}
+.hero__text {
+  color: #26334a;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+.badge {
+  background: #19c0d7;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 0.7em;
+  padding: 0.4em 1.1em;
+  box-shadow: 0 2px 8px rgba(18,52,92,0.08);
+}
+.services__list {
   list-style: none;
   margin: 2rem 0 0 0;
   padding: 0;
