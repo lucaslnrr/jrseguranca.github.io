@@ -203,6 +203,26 @@
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
 }
+
+/* Home: remove rounded corners on the first (hero) section */
+#conteudo > section.hero--upgrade:first-of-type {
+  border-radius: 0;
+}
+
+/* Home: remove rounded corners on the second section */
+#conteudo > section:nth-of-type(2) {
+  border-radius: 0;
+}
+/* If the second section is Services, also square its background panel */
+#conteudo > section:nth-of-type(2) .services__panel {
+  border-radius: 0;
+}
+
+/* Home: make first section flush with the next one (no bottom margin/padding) */
+#conteudo > section:first-of-type {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
 .hero__title {
   color: #1a2a3a;
   font-weight: 700;
@@ -221,15 +241,6 @@
   color: #26334a;
   font-size: 1.15rem;
   line-height: 1.7;
-}
-.badge {
-  background: #19c0d7;
-  color: #fff;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  border-radius: 0.7em;
-  padding: 0.4em 1.1em;
-  box-shadow: 0 2px 8px rgba(18,52,92,0.08);
 }
 .services__list {
   list-style: none;
@@ -442,6 +453,13 @@ button {
   background: var(--accent-soft);
   border-radius: 999px;
 }
+
+.hero .badge {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  box-shadow: none;
+}
+
 
 .topbar {
   background: var(--surface);
@@ -869,7 +887,8 @@ button {
 
 .hero {
   position: relative;
-  background: linear-gradient(165deg, rgba(47, 153, 74, 0.08) 0%, rgba(12, 24, 18, 0.02) 45%, rgba(47, 153, 74, 0.12) 100%);
+  background: linear-gradient(140deg, color-mix(in srgb, var(--accent) 90%, #03140d) 0%, color-mix(in srgb, var(--accent) 78%, #052719) 55%, color-mix(in srgb, var(--accent) 88%, #041a10) 100%);
+  color: #ffffff;
   overflow: hidden;
 }
 
@@ -877,8 +896,8 @@ button {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 90% 10%, rgba(47, 153, 74, 0.14), transparent 45%),
-    radial-gradient(circle at -10% 50%, rgba(47, 153, 74, 0.18), transparent 55%);
+  background: radial-gradient(circle at 88% 12%, rgba(255, 255, 255, 0.18), transparent 52%),
+    radial-gradient(circle at -6% 46%, rgba(255, 255, 255, 0.22), transparent 60%);
   z-index: 0;
 }
 
@@ -903,15 +922,16 @@ button {
   line-height: 1.1;
   font-weight: 700;
   letter-spacing: -0.02em;
+  color: #ffffff;
 }
 
 .hero__title span {
-  color: var(--accent);
+  color: color-mix(in srgb, #ffffff 85%, var(--accent) 15%);
 }
 
 .hero__text {
   font-size: 18px;
-  color: var(--secondary);
+  color: rgba(255, 255, 255, 0.82);
   margin: 0;
   max-width: 540px;
 }
@@ -922,6 +942,44 @@ button {
   gap: 18px;
   flex-wrap: wrap;
 }
+
+.hero__actions .button--ghost {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+  background: transparent;
+}
+
+.hero__actions .button--ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Hero upgrade improvements (light version on Home) */
+.hero--upgrade .hero__title { color: #1a2a3a; }
+.hero--upgrade .hero__text { color: #26334a; }
+.hero--upgrade .badge { background: var(--accent-soft); color: var(--accent); box-shadow: none; }
+.hero--upgrade .hero__actions .button--ghost { color: var(--primary); border-color: rgba(26,42,58,0.30); background: transparent; }
+.hero--upgrade .hero__actions .button--ghost:hover { background: rgba(26,42,58,0.06); }
+
+/* Helpful meta line under the CTAs without changing HTML */
+.hero .hero__actions::after {
+  content: "Atendimento em todo o ES · Orçamento em 24h · Sem fidelidade";
+  display: block;
+  font-size: 13px;
+  color: rgba(38, 51, 74, 0.70);
+  margin-top: 4px;
+}
+.hero.hero--upgrade .hero__actions::after { color: rgba(38, 51, 74, 0.70); }
+.hero:not(.hero--upgrade) .hero__actions::after { color: rgba(255, 255, 255, 0.78); }
+
+/* Trust snippet refinements */
+.hero--upgrade .hero__trust p { color: rgba(26, 42, 58, 0.78); }
+.hero__trust p strong { color: var(--accent); }
+
+/* Primary button subtle lift + focus ring */
+.hero .button--primary { box-shadow: 0 8px 20px rgba(47,153,74,0.20), 0 2px 8px rgba(47,153,74,0.15); }
+.hero .button--primary:focus-visible { outline: 3px solid rgba(47,153,74,0.35); outline-offset: 2px; }
+.hero .button--primary:hover { transform: translateY(-2px); }
+
 
 .hero__trust {
   display: flex;
@@ -941,7 +999,7 @@ button {
 .hero__trust p {
   margin: 0;
   font-size: 15px;
-  color: var(--secondary);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .hero__art {
@@ -1746,6 +1804,153 @@ textarea.input {
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
+/* Index hero: widen the image (slider) area */
+#conteudo > section.hero--upgrade .hero__slider { width: 100%; }
+
+@media (min-width: 1024px) {
+  #conteudo > section.hero--upgrade .hero__grid {
+    grid-template-columns: minmax(360px, 0.85fr) minmax(680px, 1.15fr);
+    align-items: center;
+  }
+}
+
+/* Stack text above image and make image full width on index hero */
+#conteudo > section.hero--upgrade .hero__grid {
+  grid-template-columns: 1fr;
+  min-height: 100%;
+}
+
+#conteudo > section.hero--upgrade .hero__content {
+  background: #ffffff;
+  color: var(--primary);
+  padding: clamp(16px, 3vw, 28px);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  min-height: var(--hero-text-min);
+  transition: transform .25s ease, box-shadow .25s ease, opacity .35s ease;
+  animation: heroTextIn .65s cubic-bezier(.2,.7,.2,1) both;
+}
+
+#conteudo > section.hero--upgrade .hero__content:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(16, 38, 73, 0.14), var(--shadow-card);
+}
+
+@keyframes heroTextIn {
+  from { opacity: 0; transform: translateY(8px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Layer content over the image by placing both in the same grid cell */
+#conteudo > section.hero--upgrade .hero__content,
+#conteudo > section.hero--upgrade .hero__slider {
+  grid-area: 1 / 1;
+}
+
+#conteudo > section.hero--upgrade .hero__content {
+  position: relative;
+  z-index: 2;
+  align-self: start;
+  justify-self: start;
+  max-width: min(760px, 92%);
+  margin-top: clamp(16px, 6vw, 64px);
+  margin-left: clamp(12px, 4vw, 48px);
+  margin-right: 0;
+}
+
+@media (max-width: 720px) {
+  #conteudo > section.hero--upgrade .hero__content {
+    justify-self: center;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+#conteudo > section.hero--upgrade .hero__slider { z-index: 1; }
+
+#conteudo > section.hero--upgrade .hero__content .badge {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+#conteudo > section.hero--upgrade .hero__content .hero__title { color: #0f1d2b; }
+#conteudo > section.hero--upgrade .hero__content .hero__text { color: #324256; }
+#conteudo > section.hero--upgrade .hero__content .hero__highlight { color: var(--accent); -webkit-text-fill-color: initial; background: none; }
+
+/* Make the image (slider) full-bleed to viewport width */
+#conteudo > section.hero--upgrade .hero__slider {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: auto;
+  width: 100vw;        /* full viewport width (whole page) */
+  max-width: none;
+  transform: translateX(-50%);
+  height: 100%;        /* match the section (hero) height */
+  max-height: none;
+  margin: 0;
+  border-radius: 0;
+}
+
+#conteudo > section.hero--upgrade .hero__slider::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  /* Subtle vignette: left-side + top fade for better readability */
+  background:
+    linear-gradient(90deg, rgba(3, 10, 6, 0.48) 0%, rgba(3, 10, 6, 0.28) 30%, rgba(3, 10, 6, 0.08) 55%, rgba(3, 10, 6, 0) 75%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.12) 45%, rgba(0, 0, 0, 0) 80%);
+}
+
+#conteudo > section.hero--upgrade .hero__slider-viewport { height: 100%; }
+#conteudo > section.hero--upgrade .hero__slide { height: 100%; }
+#conteudo > section.hero--upgrade .hero__slide img { height: 100%; }
+
+/* === Index hero overrides: stronger white text palette === */
+#conteudo > section.hero--upgrade {
+  background: linear-gradient(140deg,
+    color-mix(in srgb, var(--accent) 90%, #03140d) 0%,
+    color-mix(in srgb, var(--accent) 78%, #052719) 55%,
+    color-mix(in srgb, var(--accent) 88%, #041a10) 100%
+  );
+  color: #ffffff;
+  /* Height driven by text and 3x carousel rule (capped at 700px) */
+  --hero-text-min: clamp(300px, 48vh, 480px);
+  --hero-slider-min: calc(3 * var(--hero-text-min));
+  min-height: min(700px, var(--hero-slider-min));
+  padding-top: 0; /* ensure carousel starts at the very top */
+}
+
+#conteudo > section.hero--upgrade .hero__title {
+  color: #ffffff;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.12);
+}
+
+#conteudo > section.hero--upgrade .hero__highlight {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  background: none;
+  font-weight: 800;
+}
+
+#conteudo > section.hero--upgrade .hero__text {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1.05rem, 1.3vw, 1.18rem);
+  line-height: 1.7;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.08);
+}
+
+#conteudo > section.hero--upgrade .hero__text strong { color: #ffffff; }
+#conteudo > section.hero--upgrade .badge { background: rgba(255, 255, 255, 0.14); color: #ffffff; box-shadow: none; }
+#conteudo > section.hero--upgrade .hero__actions .button--ghost { color: #ffffff; border-color: rgba(255,255,255,0.45); background: transparent; }
+#conteudo > section.hero--upgrade .hero__actions .button--ghost:hover { background: rgba(255, 255, 255, 0.12); }
+#conteudo > section.hero--upgrade .hero__actions::after { color: rgba(255, 255, 255, 0.78); }
+#conteudo > section.hero--upgrade .hero__trust p { color: rgba(255, 255, 255, 0.78); }
+
 .social-links a:hover {
   background: rgba(255, 255, 255, 0.24);
   transform: translateY(-2px);
@@ -1755,6 +1960,17 @@ textarea.input {
   .hero__actions {
     width: 100%;
   }
+
+.hero__actions .button--ghost {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+  background: transparent;
+}
+
+.hero__actions .button--ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
 
   .button {
     width: 100%;
@@ -1846,4 +2062,11 @@ textarea.input {
   .step-stack__footer { border-top-color: rgba(255,255,255,0.12); color: #9fb0be; }
   .step-stack__footer strong { color: #fff; }
 }
+
+
+
+
+
+
+
 

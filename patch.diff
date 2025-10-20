@@ -1,0 +1,24 @@
+*** Begin Patch
+*** Update File: assets/css/styles.css
+@@
+-.badge {
+-  background: #19c0d7;
+-  color: #fff;
+-  font-weight: 600;
+-  letter-spacing: 0.5px;
+-  border-radius: 0.7em;
+-  padding: 0.4em 1.1em;
+-  box-shadow: 0 2px 8px rgba(18,52,92,0.08);
+-}
+-
+-.hero .badge {
+-  background: rgba(255, 255, 255, 0.14);
+-  color: #ffffff;
+-  box-shadow: none;
+-}
+-
+ .services__list {
+   list-style: none;
+   margin: 2rem 0 0 0;
+   padding: 0;
+*** End Patch
