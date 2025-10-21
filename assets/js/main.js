@@ -364,3 +364,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// Services cards: reveal on scroll + lazy-load hover backgrounds
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    const cards = Array.from(document.querySelectorAll('.section--services .service-stack'));
+    if (!cards.length) return;
+
+    const loadBg = (card) => {
+      if (!card) return;
+      const loaded = card.getAttribute('data-bg-loaded');
+      if (loaded === 'true') return;
+      const bgEl = card.querySelector('.service-bg');
+      if (!bgEl) return;
+      const src = bgEl.getAttribute('data-bg');
+      if (!src) return;
+      // set background-image and mark loaded
+      bgEl.style.backgroundImage = `url('${src}')`;
+      // small timeout to allow image to paint then reveal
+      bgEl.addEventListener('load', () => {}, { once: true });
+      // reveal visually
+      requestAnimationFrame(() => { bgEl.style.opacity = '1'; });
+      card.setAttribute('data-bg-loaded', 'true');
+    };
+
+    const onEnter = (entries, obs) => {
+      entries.forEach((entry) => {
+        const el = entry.target;
+        if (entry.isIntersecting) {
+          el.classList.add('is-visible');
+          loadBg(el);
+          obs.unobserve(el);
+        }
+      });
+    };
+
+    const io = new IntersectionObserver(onEnter, { root: null, rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    cards.forEach((c) => {
+      io.observe(c);
+      // also lazy-load on first hover for faster perceived interaction
+      c.addEventListener('mouseenter', function hoverLoad() {
+        loadBg(c);
+        c.removeEventListener('mouseenter', hoverLoad);
+      });
+    });
+  } catch (e) {
+    // swallow to avoid breaking other scripts
+    // console.warn('Services lazy-load failed', e);
+  }
+});

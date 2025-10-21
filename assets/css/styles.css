@@ -50,6 +50,90 @@
   padding: 2.5rem 0;
   margin-bottom: 2.5rem;
 }
+/* Dark variant for the services hero - powerful, high-contrast panel */
+.servicos-hero--dark {
+  /* Softer layered gradient: deep green -> teal -> soft mid tone */
+  background: linear-gradient(180deg, #073028 0%, #0e5a4b 45%, #daf7f1 100%);
+  color: #042a24;
+  border-radius: 2rem;
+  box-shadow: 0 8px 28px rgba(2,50,42,0.16);
+  padding: 2.5rem 0;
+  margin-bottom: 2rem;
+}
+.servicos-hero--dark .section-heading__title h2,
+.servicos-hero--dark .servicos-hero__desc,
+.servicos-hero--dark .section-heading__subtitle {
+  color: #042a24;
+}
+.servicos-hero--dark .servicos-hero__desc {
+  color: rgba(4,42,36,0.92);
+}
+.servicos-hero--dark .servicos-hero__features li {
+  background: rgba(4,42,36,0.06);
+  color: rgba(4,42,36,0.95);
+  box-shadow: none;
+}
+.servicos-hero--dark .servicos-hero__feature-icon {
+  color: #07c8a7;
+}
+.servicos-hero--dark .servicos-hero__image img {
+  max-width: 420px;
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 8px 28px rgba(2,50,42,0.14);
+  display: block;
+  object-fit: cover;
+  margin: 1.25rem auto;
+}
+/* Icon: make visible and keep natural colors with slight contrast tweak */
+.servicos-hero--dark .servicos-hero__icon img { display: inline-block !important; filter: saturate(1.05) contrast(0.98); width:2.2em;height:2.2em;vertical-align:middle;margin-right:0.5em; }
+.servicos-hero--dark .button--primary {
+  background: #07c8a7;
+  color: #00221a;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.servicos-hero--dark .button--primary:hover {
+  background: #05b899;
+}
+/* If we cannot change HTML, make the existing hero class on servicos.html appear dark */
+body > main > section.servicos-hero--upgrade {
+  background: linear-gradient(180deg, #073028 0%, #0e5a4b 45%, #daf7f1 100%);
+  color: #042a24;
+  border-radius: 2rem;
+  box-shadow: 0 8px 28px rgba(2,50,42,0.16);
+  padding: 2.5rem 0;
+}
+body > main > section.servicos-hero--upgrade .section-heading__title h2,
+body > main > section.servicos-hero--upgrade .servicos-hero__desc,
+body > main > section.servicos-hero--upgrade .section-heading__subtitle {
+  color: #042a24;
+}
+body > main > section.servicos-hero--upgrade .servicos-hero__features li {
+  background: rgba(4,42,36,0.06);
+  color: rgba(4,42,36,0.95);
+  box-shadow: none;
+}
+body > main > section.servicos-hero--upgrade .servicos-hero__feature-icon {
+  color: #07c8a7;
+}
+body > main > section.servicos-hero--upgrade .servicos-hero__image img {
+  max-width: 420px;
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 8px 28px rgba(2,50,42,0.14);
+  display: block;
+  object-fit: cover;
+  margin: 1.25rem auto;
+}
+body > main > section.servicos-hero--upgrade .servicos-hero__icon img { display: inline-block !important; filter: saturate(1.05) contrast(0.98); width:2.2em;height:2.2em;vertical-align:middle;margin-right:0.5em; }
+body > main > section.servicos-hero--upgrade .button--primary {
+  background: #07c8a7;
+  color: #00221a;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+body > main > section.servicos-hero--upgrade .button--primary:hover {
+  background: #05b899;
+}
 .servicos-hero__wrapper {
   padding: 0;
 }
@@ -78,6 +162,9 @@
   vertical-align: middle;
   margin-right: 0.5em;
 }
+/* Hide decorative services SVG in the hero (keeps markup intact but visually removes it) */
+.servicos-hero__icon img { display: none !important; }
+.servicos-hero__icon:empty { margin-right: 0; }
 @media (max-width: 900px) {
   .servicos-hero__grid {
     flex-direction: column;
@@ -126,47 +213,7 @@
     padding: 1.2rem 0.7rem;
   }
 }
-.sobre-hero__wrapper {
-  padding: 2.5rem 0;
-}
-.sobre-hero__grid {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  flex-wrap: wrap;
-}
-.sobre-hero__info {
-  flex: 2 1 340px;
-  min-width: 280px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.sobre-hero__image {
-  flex: 1 1 260px;
-  min-width: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-@media (max-width: 900px) {
-  .sobre-hero__grid {
-    flex-direction: column;
-    gap: 2rem;
-  }
-  .sobre-hero__info,
-  .sobre-hero__image {
-    min-width: 0;
-    flex: 1 1 100%;
-  }
-}
-.sobre-hero--upgrade {
-  background: linear-gradient(120deg, #f7fafd 0%, #eaf4fb 100%);
-  border-radius: 2rem;
-  box-shadow: 0 8px 32px rgba(18,52,92,0.10);
-  padding: 2.5rem 0 2.5rem 0;
-  margin-bottom: 2.5rem;
-}
+/* removed old sobre hero section styles (no longer used) */
 .sobre-section--upgrade {
   background: #fff;
   border-radius: 1.5rem;
@@ -187,7 +234,6 @@
   box-shadow: 0 8px 32px rgba(18,52,92,0.10);
 }
 @media (max-width: 900px) {
-  .sobre-hero--upgrade,
   .sobre-section--upgrade {
     border-radius: 1rem;
     padding: 1.5rem 0;
@@ -196,12 +242,112 @@
     padding: 1.2rem 0.7rem;
   }
 }
+
+/* Five-Systems About section (applied to sobre.html) */
+.fivesystems-about {
+  background: #ffffff;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(3,22,35,0.08);
+  padding: 2.5rem 0;
+  margin-bottom: 2.5rem;
+}
+.fivesystems-about__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .fivesystems-about__grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+.about-image { position: relative; }
+.about-image__frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 18px 50px rgba(2,6,23,0.18);
+}
+.about-image__frame img { width: 100%; height: 100%; max-height: 420px; object-fit: cover; display: block; }
+.about-image__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.18), transparent 40%); }
+.about-stats {
+  position: absolute;
+  right: -16px;
+  bottom: -16px;
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 1px solid rgba(3,22,35,0.08);
+  box-shadow: 0 20px 50px rgba(3,22,35,0.16);
+  padding: 16px 18px;
+  display: flex;
+  gap: 24px;
+}
+.about-stat { text-align: center; }
+.about-stat__number { font-size: 1.4rem; font-weight: 800; color: #f97316; }
+.about-stat__label { font-size: 0.9rem; color: #475569; }
+.about-content {}
+.about-title { font-size: clamp(24px, 4vw, 36px); line-height: 1.12; color: #0f1724; margin-bottom: 12px; font-weight: 800; }
+.about-paragraph { color: #475569; font-size: 1.05rem; line-height: 1.7; margin-bottom: 10px; }
+.about-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 14px 0 18px; }
+.about-feature { background: #ffffff; border: 1px solid rgba(3,22,35,0.08); border-radius: 12px; box-shadow: 0 10px 24px rgba(3,22,35,0.06); padding: 16px; text-align: center; transition: box-shadow 200ms ease, transform 200ms ease; }
+.about-feature:hover { transform: translateY(-2px); box-shadow: 0 18px 42px rgba(3,22,35,0.10); }
+.about-feature__icon { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; margin: 0 auto 10px; background: #f7fafd; border: 1px solid rgba(3,22,35,0.06); color: #083247; }
+.about-feature__title { margin: 6px 0; font-weight: 700; color: #0f1724; font-size: 1rem; }
+.about-feature__desc { color: #475569; font-size: 0.95rem; }
+.about-features .about-feature:nth-child(1) .about-feature__icon { color: #16a34a; }
+.about-features .about-feature:nth-child(2) .about-feature__icon { color: #2563eb; }
+.about-features .about-feature:nth-child(3) .about-feature__icon { color: #f97316; }
+.about-cta { display: inline-block; margin-top: 6px; }
+.button.button--dark { background: #0f1724; color: #ffffff; border-radius: 999px; padding: 0.8rem 1.25rem; border: 1px solid rgba(255,255,255,0.08); font-weight: 700; }
+.button.button--dark:hover { background: #16253a; }
 .hero--upgrade {
   background: linear-gradient(120deg, #eaf4fb 0%, #f7fafd 100%);
   border-radius: 2rem;
   box-shadow: 0 8px 32px rgba(18,52,92,0.10);
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
+}
+
+/* Contact page: dark hero for first section */
+.contact-hero {
+  /* darker green gradient to match brand accent */
+  background: linear-gradient(180deg, #052816 0%, #0a3a20 100%);
+  color: #ffffff;
+  padding: 2.5rem 0;
+  border-radius: 0;
+  margin-bottom: 1.5rem;
+}
+.contact-hero .section-heading__title h2,
+.contact-hero .section-heading__title p,
+.contact-hero .section-heading__subtitle {
+  color: rgba(255,255,255,0.95);
+}
+
+/* Give the contact page body a richer, multi-color background */
+body.page-contato {
+  /* clean, light background consistent with site surfaces */
+  background-color: var(--surface-alt);
+  background-image: none;
+  background-repeat: unset;
+  background-attachment: unset;
+  color: var(--primary);
+}
+
+/* Ensure wrappers containing white surfaces remain readable */
+.page-contato .wrapper, .page-contato .surface-block {
+  color: inherit;
+}
+.contact-hero .badge {
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  color: #dff8f5; /* subtle pale greenish-white */
+  box-shadow: none;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.contact-hero .button--primary {
+  background: var(--accent);
+  color: #fff;
+}
+.contact-hero .button--primary:hover {
+  background: var(--accent-dark);
 }
 
 /* Home: remove rounded corners on the first (hero) section */
@@ -268,6 +414,215 @@
   box-shadow: 0 4px 16px rgba(18,52,92,0.10);
 }
 .services__list svg {
+
+/* ===== Five-Systems inspired theme (scoped) ===== */
+.servicos-fivesystems .servicos-hero--upgrade {
+  background: linear-gradient(135deg,#0f1724 0%,#0b1220 48%,#071226 100%);
+  color: #f8fafc;
+  border-radius: 1.25rem;
+  padding: 3.5rem 0;
+  box-shadow: 0 30px 60px rgba(2,6,23,0.6), inset 0 -2px 0 rgba(255,255,255,0.02);
+}
+.servicos-fivesystems .section-heading__title h2 {
+  color: #f8fafc;
+  font-size: 2.1rem;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+}
+.servicos-fivesystems .servicos-hero__desc {
+  color: rgba(248,250,252,0.85);
+}
+.servicos-fivesystems .servicos-hero__features li {
+  background: rgba(255,255,255,0.03);
+  color: rgba(248,250,252,0.9);
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  box-shadow: none;
+}
+.servicos-fivesystems .servicos-hero__feature-icon { color: #ff8a00; }
+.servicos-fivesystems .servicos-hero__image img {
+  max-width: 420px;
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 18px 50px rgba(2,6,23,0.6);
+  display: block;
+  object-fit: cover;
+  margin: 1.25rem auto;
+}
+
+/* Cards: use Five-Systems card look (flat, subtle border, strong heading) */
+.servicos-fivesystems .service-stack {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  color: #e6eef8;
+  border-radius: 0.9rem;
+  padding: 1.5rem;
+  box-shadow: 0 12px 30px rgba(2,6,23,0.45);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+.servicos-fivesystems .service-stack:hover { transform: translateY(-6px); box-shadow: 0 26px 60px rgba(2,6,23,0.6); }
+.servicos-fivesystems .service-stack__head h3 { color: #ffffff; font-size: 1.15rem; }
+.servicos-fivesystems .service-stack__body { color: rgba(230,238,248,0.9); }
+.servicos-fivesystems .service-stack__footer .button--primary {
+  background: linear-gradient(90deg,#ff8a00 0%,#ff6a00 100%);
+  color: #06121a;
+  padding: 0.9rem 1.05rem;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(255,106,0,0.12);
+  border: none;
+}
+.servicos-fivesystems .service-stack__footer .button--primary:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 18px 48px rgba(255,106,0,0.18);
+}
+
+/* Utilities: spacing and grid tweaks for the services cards */
+.servicos-fivesystems .services-cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 1.25rem; }
+.servicos-fivesystems .services-cards .service-stack { padding: 1.25rem; }
+
+/* small screens: keep spacing comfortable */
+@media (max-width:900px){
+  .servicos-fivesystems .servicos-hero--upgrade { padding: 2rem 0; border-radius: 0.75rem }
+  .servicos-fivesystems .section-heading__title h2 { font-size: 1.6rem }
+}
+
+/* End Five-Systems inspired theme */
+
+/* Hover background and overlay for static NOS SERVICES cards */
+.section--services .service-stack { position: relative; overflow: hidden; }
+.section--services .service-stack .service-bg { transition: opacity 0.5s ease; }
+.section--services .service-stack .service-overlay { transition: opacity 0.5s ease; }
+.section--services .service-stack:hover .service-bg { opacity: 1; transform: scale(1.03); }
+.section--services .service-stack:hover .service-overlay { opacity: 1; }
+.section--services .service-stack h3 { margin: 0.35rem 0 0.4rem; color: #0f1724; }
+.section--services .service-stack p { color: #475569; }
+.section--services .service-stack ul { margin: 0.6rem 0 0 0; padding-left: 1.15rem; color: #475569; }
+
+/* Reveal on scroll & subtle motion to match reference */
+.section--services .service-stack {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 420ms cubic-bezier(.2,.9,.25,1), transform 420ms cubic-bezier(.2,.9,.25,1);
+}
+.section--services .service-stack.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.section--services .service-bg {
+  background-size: cover;
+  background-position: center;
+  will-change: opacity, transform;
+  transition: opacity 520ms ease, transform 520ms ease;
+}
+
+/* Slightly larger headings and tighter spacing to better match reference */
+.servicos-fivesystems .section-heading__title h2 { font-size: 2.3rem; letter-spacing: -0.8px; }
+.servicos-fivesystems .service-stack { padding: 1.5rem 1.25rem; }
+.servicos-fivesystems .services-cards { gap: 1.5rem; }
+.servicos-fivesystems .service-stack__head h3 { font-size: 1.18rem; letter-spacing: -0.2px; }
+.servicos-fivesystems .service-stack__body ul { margin-top: 0.55rem; }
+
+/* Ensure cards in the NOS SERVICES section are left-aligned and readable */
+.section--services .service-stack { text-align: left; }
+.section--services .service-stack .service-stack__head > div { text-align: left !important; }
+.section--services .service-stack__head h3 { color: #0f1724 !important; font-weight:700; }
+.section--services .service-stack__head p,
+.section--services .service-stack__body,
+.section--services .service-stack__body li { color: #475569 !important; }
+
+/* When background image and overlay are visible, switch text to light for contrast */
+.section--services .service-stack:hover .service-stack__head h3,
+.section--services .service-stack.is-visible .service-stack__head h3,
+.section--services .service-stack:hover .service-stack__head p,
+.section--services .service-stack:hover .service-stack__body,
+.section--services .service-stack:hover .service-stack__body li {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+/* Make sure content sits above bg and overlay */
+.section--services .service-stack > [style*="position:relative"] {
+  position: relative;
+  z-index: 3;
+}
+
+  /* Dark content panel inside cards for legibility over images */
+  .section--services .service-content {
+    background: rgba(7,20,30,0.78); /* dark translucent panel */
+    padding: 1rem 1rem 1.1rem 1rem;
+    border-radius: 10px;
+    color: #f8fafc;
+    transition: background 260ms ease, color 260ms ease;
+  }
+  .section--services .service-content h3,
+  .section--services .service-content p,
+  .section--services .service-content ul,
+  .section--services .service-content li {
+    color: #f8fafc !important;
+  }
+  .section--services .service-stack:hover .service-content {
+    background: rgba(4,10,16,0.84);
+  }
+
+  /* Apply the same dark content panel style to the services on servicos.html */
+  .servicos-fivesystems .service-content {
+    background: rgba(7,20,30,0.78);
+    padding: 1rem 1rem 1.1rem 1rem;
+    border-radius: 10px;
+    color: #f8fafc;
+    transition: background 260ms ease, color 260ms ease;
+  }
+  .servicos-fivesystems .service-content h3,
+  .servicos-fivesystems .service-content p,
+  .servicos-fivesystems .service-content ul,
+  .servicos-fivesystems .service-content li {
+    color: #f8fafc !important;
+  }
+  .servicos-fivesystems .service-stack:hover .service-content {
+    background: rgba(4,10,16,0.84);
+  }
+
+/* Five-Systems repo parity: neutral card content by default, rely on hover overlay */
+.section--services.servicos-fivesystems .service-content { background: transparent; padding: 0; border-radius: 0; color: inherit; }
+.section--services.servicos-fivesystems .service-content h3,
+.section--services.servicos-fivesystems .service-content p,
+.section--services.servicos-fivesystems .service-content ul,
+.section--services.servicos-fivesystems .service-content li { color: inherit !important; }
+.section--services.servicos-fivesystems .service-stack:hover .service-content { background: transparent; }
+
+/* Remove decorative left accent on Five-Systems cards to match source layout */
+.section--services.servicos-fivesystems .service-stack::before { display: none; }
+
+/* Icon wrapper subtle scale on hover (mimics group-hover scale) */
+.section--services .service-icon { transition: transform 220ms ease; will-change: transform; }
+.section--services .service-stack:hover .service-icon { transform: scale(1.08); }
+
+/* Alignments for services cards: center header, left body for readability */
+.section--services.servicos-fivesystems .service-stack { text-align: left; }
+.section--services.servicos-fivesystems .service-stack__head { display: flex; flex-direction: column; align-items: center; text-align: center !important; }
+.section--services.servicos-fivesystems .service-stack__body { text-align: left; }
+
+/* Ensure consistent clean white card base and subtle border/shadow */
+.section--services.servicos-fivesystems .service-stack {
+  background: #ffffff;
+  border: 1px solid rgba(3,22,35,0.08);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(3,22,35,0.05);
+  padding: 20px;
+}
+
+/* When card uses grid with icon column, make content span full width */
+.section--services.servicos-fivesystems .service-stack > [style*="position:relative"] { grid-column: 1 / -1; }
+
+/* Slightly larger card titles for readability */
+.section--services.servicos-fivesystems .service-stack__head h3 { font-size: 1.15rem; color: #0f1724; }
+
+
+
+
+
   min-width: 1.5em;
   min-height: 1.5em;
   color: #19c0d7;
@@ -1774,19 +2129,35 @@ textarea.input {
 
 .service-stack {
   position: relative;
-  background: var(--surface);
+  background: linear-gradient(180deg, var(--surface) 0%, rgba(255,255,255,0.02) 100%);
   border-radius: 28px;
-  border: 1px solid rgba(22, 34, 51, 0.08);
-  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(22, 34, 51, 0.06);
+  box-shadow: 0 10px 30px rgba(17,27,39,0.10), 0 4px 12px rgba(17,27,39,0.06);
   display: grid;
-  gap: 20px;
-  padding: 30px;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  gap: 18px;
+  padding: 28px;
+  transition: transform 0.28s cubic-bezier(.2,.9,.3,1), box-shadow 0.28s ease, border-color 0.28s ease;
+  overflow: hidden;
+}
+
+/* Accent strip on the left to give tactile weight */
+.service-stack::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: linear-gradient(180deg, var(--accent) 0%, #07c8a7 100%);
+  box-shadow: 0 0 18px rgba(7,200,167,0.08);
+  border-top-left-radius: 28px;
+  border-bottom-left-radius: 28px;
 }
 
 .service-stack:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 30px 80px rgba(17, 35, 26, 0.14);
+  transform: translateY(-10px) scale(1.01);
+  box-shadow: 0 40px 90px rgba(12,28,24,0.16), 0 12px 36px rgba(12,28,24,0.08);
+  border-color: rgba(7,200,167,0.18);
 }
 
 .service-stack__head {
@@ -1797,24 +2168,27 @@ textarea.input {
 }
 
 .service-stack__icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 20px;
-  background: rgba(47, 153, 74, 0.12);
-  border: 1px solid rgba(47, 153, 74, 0.25);
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(7,200,167,0.12), rgba(7,200,167,0.06));
+  border: 1px solid rgba(7,200,167,0.18);
   display: grid;
   place-items: center;
+  box-shadow: 0 8px 20px rgba(7,200,167,0.06) inset;
 }
 
 .service-stack__icon svg {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   color: var(--accent);
 }
 
 .service-stack__head h3 {
   margin: 0;
   font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
 }
 
 .service-stack__head p {
@@ -1840,18 +2214,249 @@ textarea.input {
 
 .service-stack__body li::before {
   content: "";
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 999px;
   background: var(--accent);
   margin-top: 6px;
-  box-shadow: 0 0 0 4px rgba(47, 153, 74, 0.12);
+  box-shadow: 0 0 0 6px rgba(7,200,167,0.06);
   flex-shrink: 0;
 }
 
 .service-stack__footer {
   display: grid;
   gap: 12px;
+}
+
+/* Make the primary CTA inside powerful cards stand out */
+.service-stack .button--primary {
+  background: linear-gradient(90deg, #07c8a7 0%, #05b899 100%);
+  color: #00221a;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(7,200,167,0.12);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.service-stack .button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(7,200,167,0.14);
+}
+
+/* Featured card (first item) styling without changing HTML */
+.services-cards > .service-stack:first-child {
+  grid-column: span 1;
+  transform: translateY(-6px);
+  padding: 36px;
+}
+
+.services-cards > .service-stack:first-child::before {
+  width: 10px;
+  box-shadow: 0 0 26px rgba(7,200,167,0.12);
+}
+
+.services-cards > .service-stack:first-child .service-stack__icon {
+  width: 84px;
+  height: 84px;
+  border-radius: 16px;
+  box-shadow: 0 14px 40px rgba(7,200,167,0.08) inset;
+}
+
+.services-cards > .service-stack:first-child .service-stack__head h3 {
+  font-size: 22px;
+}
+
+.services-cards > .service-stack:first-child .service-stack__footer .button--primary {
+  padding: 0.9rem 1.1rem;
+  border-radius: 14px;
+}
+
+/* Government-like, formal styling for servicos page */
+.servicos-hero--upgrade,
+.servicos-hero--dark {
+  --gov-bg: linear-gradient(180deg, #f6f8fb 0%, #eef3f8 100%);
+  --gov-accent: #0b3550; /* deep navy */
+}
+
+.servicos-hero--upgrade .section-heading__title h2,
+.servicos-hero--upgrade .section-heading__title p {
+  color: #0b2430; /* charcoal */
+}
+
+/* Tone down bright greens and replace with navy accent on this page */
+.servicos-hero--upgrade .servicos-hero__feature-icon,
+.servicos-hero--upgrade .service-stack__icon svg {
+  color: var(--gov-accent) !important;
+}
+
+/* Cards: more restrained, less rounded, subtle border */
+.servicos-hero--upgrade .service-stack,
+.services-cards .service-stack {
+  border-radius: 12px;
+  border: 1px solid rgba(11,35,48,0.06);
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(11,35,48,0.04);
+  padding: 22px;
+}
+
+.servicos-hero--upgrade .service-stack::before,
+.services-cards .service-stack::before {
+  background: linear-gradient(180deg, var(--gov-accent) 0%, #083247 100%);
+  width: 4px;
+}
+
+.servicos-hero--upgrade .service-stack__icon {
+  background: rgba(11,53,80,0.06);
+  border: 1px solid rgba(11,35,48,0.08);
+}
+
+/* CTA: solid navy, conservative */
+.servicos-hero--upgrade .service-stack .button--primary,
+.services-cards .service-stack .button--primary {
+  background: var(--gov-accent);
+  color: #fff;
+  box-shadow: none;
+  padding: 0.7rem 0.95rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.servicos-hero--upgrade .service-stack .button--primary:hover,
+.services-cards .service-stack .button--primary:hover {
+  background: #083247;
+  transform: none;
+}
+
+/* Typographic adjustments for a formal tone */
+.servicos-hero--upgrade h3,
+.services-cards .service-stack__head h3 {
+  font-weight: 700;
+  color: #07202a;
+}
+
+@media (max-width: 720px) {
+  .servicos-hero--upgrade .service-stack { padding: 18px; }
+  .services-cards { gap: 18px; }
+  .services-cards > .service-stack:first-child { padding: 22px; }
+}
+
+/* ----- Five-Systems inspired theme for servicos ----- */
+/* Scoped under .servicos-hero--upgrade to avoid global breakage */
+.servicos-hero--upgrade {
+  background: #ffffff;
+}
+
+.servicos-hero--upgrade .servicos-hero__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.servicos-hero--upgrade .servicos-hero__info .section-heading__title h2 {
+  font-size: clamp(28px, 4.4vw, 42px);
+  line-height: 1.05;
+  color: #052734;
+  margin-bottom: 0.6rem;
+}
+
+.servicos-hero--upgrade .servicos-hero__desc {
+  color: #37474f;
+  font-size: 16px;
+  max-width: 56ch;
+}
+
+.servicos-hero__image img {
+  width: 100%;
+  height: auto;
+  max-width: 520px;
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 60px rgba(3,22,35,0.08);
+  display: block;
+  margin-left: auto;
+}
+
+/* Feature bullets as clean horizontal badges */
+.servicos-hero__features ul {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.servicos-hero__features li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f1f6f8;
+  color: #083247;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Services grid: more neutral cards with image-backed icons */
+.services-cards {
+  gap: clamp(20px, 4vw, 28px);
+}
+
+.services-cards .service-stack {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.services-cards .service-stack__icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(3,22,35,0.06);
+  box-shadow: 0 8px 24px rgba(3,22,35,0.04) inset;
+}
+
+/* Use existing assets images for icons (fallback to accent if missing) */
+.services-cards .service-stack:nth-child(1) .service-stack__icon { background-image: url('../img/20.jpeg'); }
+.services-cards .service-stack:nth-child(2) .service-stack__icon { background-image: url('../img/21.jpeg'); }
+.services-cards .service-stack:nth-child(3) .service-stack__icon { background-image: url('../img/22.jpeg'); }
+.services-cards .service-stack:nth-child(4) .service-stack__icon { background-image: url('../img/23.jpeg'); }
+.services-cards .service-stack:nth-child(5) .service-stack__icon { background-image: url('../img/6.jpeg'); }
+.services-cards .service-stack:nth-child(6) .service-stack__icon { background-image: url('../img/7.jpeg'); }
+
+.services-cards .service-stack__icon svg { display: none; }
+
+.services-cards .service-stack__head h3 {
+  margin: 0 0 6px 0;
+  font-size: 16px;
+  color: #06242e;
+}
+
+.services-cards .service-stack__body {
+  padding-top: 2px;
+}
+
+.services-cards .service-stack__body ul { gap: 8px; }
+
+.services-cards .service-stack__footer { margin-top: 8px; }
+
+.services-cards .button--primary.button--block {
+  width: auto;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+/* Reduce hover theatrics to keep it corporate and calm */
+.services-cards .service-stack:hover { transform: translateY(-4px); box-shadow: 0 18px 48px rgba(3,22,35,0.06); }
+
+@media (max-width: 900px) {
+  .servicos-hero__grid { grid-template-columns: 1fr; }
+  .services-cards .service-stack { grid-template-columns: 56px 1fr; }
+  .servicos-hero__image img { max-width: 420px; margin: 0 auto; }
 }
 
 .split-columns {
@@ -2180,12 +2785,12 @@ textarea.input {
   }
 }
 
-/* ==========================================
-   Contact page enhancements
-   ========================================== */
 .page-contato .contact-hero {
-  background: linear-gradient(135deg, rgba(47,153,74,0.10), rgba(15,30,46,0.06));
-  border-bottom: 1px solid rgba(22,34,51,0.06);
+  /* stronger dark green background for contact page */
+  background: linear-gradient(180deg, #06321a 0%, #0b3d22 55%, #041e12 100%);
+  color: #ffffff;
+  border-bottom: none;
+  border-radius: 0;
 }
 
 .page-contato .surface-block h3 {
