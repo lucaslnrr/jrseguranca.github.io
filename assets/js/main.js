@@ -190,4 +190,123 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSlider();
     startAutoplay();
   }
+
+  // Booking form: show success message if redirected with ?enviado=1
+  const searchParams = new URLSearchParams(window.location.search);
+  const formSuccess = document.getElementById('form-success');
+  if (searchParams.get('enviado') === '1' && formSuccess) {
+    formSuccess.hidden = false;
+    formSuccess.classList.add('is-visible');
+    window.setTimeout(() => {
+      formSuccess.classList.remove('is-visible');
+      formSuccess.hidden = true;
+      // remove query param to avoid repeated message on refresh
+      if (history.replaceState) {
+        const url = new URL(window.location);
+        url.searchParams.delete('enviado');
+        history.replaceState({}, document.title, url.pathname + url.search + url.hash);
+      }
+    }, 6000);
+  }
+
+  
+
+  // Prevent spam when honeypot is filled and ensure consent is checked client-side
+  const bookingForm = document.getElementById('formulario');
+  if (bookingForm) {
+    const submitBtn = document.getElementById('form-submit');
+    const setError = (id, message) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (message) {
+        el.textContent = message;
+        el.hidden = false;
+        el.classList.add('is-visible');
+      } else {
+        el.textContent = '';
+        el.hidden = true;
+        el.classList.remove('is-visible');
+      }
+    };
+
+    const validateEmail = (value) => {
+      if (!value) return false;
+      // simple email regex (not perfect but sufficient for client-side check)
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    };
+
+    const validateForm = () => {
+      let valid = true;
+      const nome = bookingForm.querySelector('#nome');
+      const empresa = bookingForm.querySelector('#empresa');
+      const email = bookingForm.querySelector('#email');
+      const mensagem = bookingForm.querySelector('#mensagem');
+      const telefone = bookingForm.querySelector('#telefone');
+      const consent = bookingForm.querySelector('#consent');
+
+      setError('error-nome', '');
+      setError('error-empresa', '');
+      setError('error-email', '');
+      setError('error-mensagem', '');
+      setError('error-telefone', '');
+      setError('error-consent', '');
+
+      if (!nome || !nome.value.trim()) {
+        setError('error-nome', 'Por favor, informe seu nome.');
+        valid = false;
+      }
+      if (!empresa || !empresa.value.trim()) {
+        setError('error-empresa', 'Por favor, informe a empresa.');
+        valid = false;
+      }
+      if (!email || !validateEmail(email.value.trim())) {
+        setError('error-email', 'Informe um e-mail válido.');
+        valid = false;
+      }
+      if (!mensagem || !mensagem.value.trim()) {
+        setError('error-mensagem', 'Por favor, descreva brevemente a necessidade.');
+        valid = false;
+      }
+      if (telefone && telefone.value && telefone.value.trim().length < 6) {
+        setError('error-telefone', 'Informe um telefone válido ou deixe em branco.');
+        valid = false;
+      }
+      if (consent && !consent.checked) {
+        setError('error-consent', 'É necessário autorizar o contato para prosseguir.');
+        valid = false;
+      }
+
+      return valid;
+    };
+
+    bookingForm.addEventListener('submit', (ev) => {
+      const honeypot = bookingForm.querySelector('input[name="website"]');
+      if (honeypot && honeypot.value) {
+        // probable bot
+        ev.preventDefault();
+        return;
+      }
+
+      // run client-side validations
+      const ok = validateForm();
+      if (!ok) {
+        ev.preventDefault();
+        // focus first visible error field
+        const firstErr = bookingForm.querySelector('.field-error.is-visible');
+        if (firstErr) {
+          const field = firstErr.previousElementSibling;
+          if (field && (field.tagName === 'INPUT' || field.tagName === 'TEXTAREA')) {
+            field.focus();
+          }
+        }
+        return;
+      }
+
+      // disable submit to prevent double submit and show loading state
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add('is-loading');
+      }
+    });
+  }
 });
