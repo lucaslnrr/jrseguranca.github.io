@@ -263,7 +263,24 @@
           </ul>
         </div>
         <div class="services__art shadow-soft">
-          <img src="assets/img/20.jpeg" alt="Ilustração dos serviços oferecidos" loading="lazy" />
+          <!-- Vertical carousel: services imagery -->
+          <div class="services__carousel" data-carousel="vertical" aria-label="Galeria de serviços JR Segurança">
+            <div class="services__carousel-viewport">
+              <div class="services__carousel-track">
+                <div class="services__carousel-slide"><img src="assets/img/20.jpeg" alt="Serviços JR Segurança 20" loading="lazy" /></div>
+                <div class="services__carousel-slide"><img src="assets/img/21.jpeg" alt="Serviços JR Segurança 21" loading="lazy" /></div>
+                <div class="services__carousel-slide"><img src="assets/img/22.jpeg" alt="Serviços JR Segurança 22" loading="lazy" /></div>
+                <div class="services__carousel-slide"><img src="assets/img/23.jpeg" alt="Serviços JR Segurança 23" loading="lazy" /></div>
+              </div>
+            </div>
+            <button class="services__carousel-control services__carousel-control--prev" type="button" aria-label="Imagem anterior">
+              <i class="bi bi-chevron-up" aria-hidden="true"></i>
+            </button>
+            <button class="services__carousel-control services__carousel-control--next" type="button" aria-label="Próxima imagem">
+              <i class="bi bi-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="services__carousel-dots" role="tablist" aria-label="Navegação da galeria"></div>
+          </div>
         </div>
       </div>
     </section>

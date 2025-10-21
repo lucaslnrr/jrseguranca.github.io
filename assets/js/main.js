@@ -209,6 +209,60 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 6000);
   }
 
+  // vertical services carousel initializer
+  document.querySelectorAll('[data-carousel="vertical"]').forEach((carousel) => {
+    const track = carousel.querySelector('.services__carousel-track');
+    const slides = Array.from(carousel.querySelectorAll('.services__carousel-slide'));
+    const prev = carousel.querySelector('.services__carousel-control--prev');
+    const next = carousel.querySelector('.services__carousel-control--next');
+    const dots = carousel.querySelector('.services__carousel-dots');
+    if (!track || slides.length === 0) return;
+    let idx = 0;
+    const total = slides.length;
+    let t = null;
+    const interval = 5000;
+
+    const go = (i) => {
+      idx = (i + total) % total;
+      track.style.transform = `translateY(-${idx * 100}%)`;
+      if (dots) Array.from(dots.children).forEach((b, j) => b.setAttribute('aria-current', j === idx ? 'true' : 'false'));
+    };
+
+    const nextFn = () => go(idx + 1);
+    const prevFn = () => go(idx - 1);
+
+    if (dots) {
+      slides.forEach((_, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', `Ir para imagem ${i + 1}`);
+        b.addEventListener('click', () => { go(i); reset(); });
+        dots.appendChild(b);
+      });
+    }
+
+    if (next) next.addEventListener('click', () => { nextFn(); reset(); });
+    if (prev) prev.addEventListener('click', () => { prevFn(); reset(); });
+
+    const start = () => { t = window.setInterval(nextFn, interval); };
+    const stop = () => { if (t) { window.clearInterval(t); t = null; } };
+    const reset = () => { stop(); start(); };
+
+    carousel.addEventListener('mouseenter', stop);
+    carousel.addEventListener('mouseleave', start);
+    carousel.addEventListener('focusin', stop);
+    carousel.addEventListener('focusout', start);
+
+    document.addEventListener('keydown', (ev) => {
+      if (!carousel.contains(document.activeElement)) return;
+      if (ev.key === 'ArrowDown') { ev.preventDefault(); nextFn(); reset(); }
+      if (ev.key === 'ArrowUp') { ev.preventDefault(); prevFn(); reset(); }
+    });
+
+    go(0);
+    start();
+  });
+
   
 
   // Prevent spam when honeypot is filled and ensure consent is checked client-side
