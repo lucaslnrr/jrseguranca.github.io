@@ -413,3 +413,66 @@ document.addEventListener('DOMContentLoaded', () => {
     // console.warn('Services lazy-load failed', e);
   }
 });
+
+// Ensure overlay panel shows the card title + description (and move the text inside it)
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    const stacks = Array.from(document.querySelectorAll('.section--services .service-stack'));
+    stacks.forEach((stack) => {
+      const overlay = stack.querySelector('.service-overlay');
+      if (!overlay) return;
+      let panel = overlay.querySelector('.overlay-panel');
+      if (!panel) {
+        panel = document.createElement('div');
+        panel.className = 'overlay-panel';
+        overlay.appendChild(panel);
+      }
+      const titleEl = stack.querySelector('.service-stack__head h3');
+      const descEl = stack.querySelector('.service-stack__head p');
+      const title = titleEl ? titleEl.textContent.trim() : '';
+      const desc = descEl ? descEl.textContent.trim() : '';
+      panel.innerHTML = `${title ? `<h3>${title}</h3>` : ''}${desc ? `<p>${desc}</p>` : ''}`;
+      if (descEl) descEl.style.display = 'none';
+    });
+  } catch (e) {
+    // no-op
+  }
+});
+
+// Inject dark inner panel into each services card (.service-stack) with specified texts
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    const stacks = Array.from(document.querySelectorAll('.section--services .service-stack'));
+    const titles = [
+      'Gestao do eSocial',
+      'Inspecoes Tecnicas',
+      'Elaboracao de Programas e Laudos',
+      'Assessoria em Seguranca do Trabalho',
+      'Treinamentos de Seguranca',
+      'Acompanhamento de Execucao de Obra'
+    ];
+    const descs = [
+      'Gestao completa de eventos, prazos e conformidade.',
+      'Inspecoes periodicas para identificar riscos e priorizar correcoes.',
+      'PPRA, PCMSO, LTCAT e laudos tecnicos para conformidade.',
+      'Politicas, gestao de riscos e atendimento as NRs.',
+      'Capacitacoes praticas e teoricas por NR.',
+      'Vistorias, relatorios e coordenacao tecnica.'
+    ];
+    stacks.forEach((stack, idx) => {
+      const contentEl = stack.querySelector('.service-content');
+      if (!contentEl) return;
+      let panel = contentEl.querySelector('.card-dark');
+      if (!panel) {
+        panel = document.createElement('div');
+        panel.className = 'card-dark';
+        contentEl.appendChild(panel);
+      }
+      const t = titles[idx] || 'Servico';
+      const d = descs[idx] || '';
+      panel.innerHTML = `<strong>${t}</strong>${d ? `<p>${d}</p>` : ''}`;
+    });
+  } catch (e) {
+    // no-op
+  }
+});

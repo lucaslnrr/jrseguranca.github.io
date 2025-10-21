@@ -245,9 +245,10 @@ body > main > section.servicos-hero--upgrade .button--primary:hover {
 
 /* Five-Systems About section (applied to sobre.html) */
 .fivesystems-about {
-  background: #ffffff;
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-alt) 100%);
   border-radius: 1.5rem;
-  box-shadow: 0 8px 32px rgba(3,22,35,0.08);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--line);
   padding: 2.5rem 0;
   margin-bottom: 2.5rem;
 }
@@ -260,45 +261,48 @@ body > main > section.servicos-hero--upgrade .button--primary:hover {
 @media (max-width: 900px) {
   .fivesystems-about__grid { grid-template-columns: 1fr; gap: 1.5rem; }
 }
+.page-sobre .fivesystems-about > .wrapper { width: 100% !important; margin: 0 auto; }
+.page-sobre .fivesystems-about__grid { grid-template-columns: 50vw 1fr; gap: 0; }
+@media (max-width: 900px) { .page-sobre .fivesystems-about__grid { grid-template-columns: 1fr; } }
+.page-sobre .about-image__frame img { width: 100% !important; height: auto !important; max-height: none !important; object-fit: cover; object-position: left top; }
+.page-sobre .about-content { padding: 0 24px; }
 .about-image { position: relative; }
 .about-image__frame {
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
-  box-shadow: 0 18px 50px rgba(2,6,23,0.18);
+  box-shadow: 0 18px 50px rgba(2,6,23,0.14);
 }
 .about-image__frame img { width: 100%; height: 100%; max-height: 420px; object-fit: cover; display: block; }
-.about-image__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.18), transparent 40%); }
+.about-image__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(31,109,52,0.20), transparent 45%); }
 .about-stats {
   position: absolute;
   right: -16px;
   bottom: -16px;
   background: #ffffff;
   border-radius: 1rem;
-  border: 1px solid rgba(3,22,35,0.08);
-  box-shadow: 0 20px 50px rgba(3,22,35,0.16);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
   padding: 16px 18px;
   display: flex;
   gap: 24px;
 }
 .about-stat { text-align: center; }
-.about-stat__number { font-size: 1.4rem; font-weight: 800; color: #f97316; }
-.about-stat__label { font-size: 0.9rem; color: #475569; }
+.about-stat__number { font-size: 1.4rem; font-weight: 800; color: var(--accent); }
+.about-stat__label { font-size: 0.9rem; color: var(--secondary); }
 .about-content {}
-.about-title { font-size: clamp(24px, 4vw, 36px); line-height: 1.12; color: #0f1724; margin-bottom: 12px; font-weight: 800; }
-.about-paragraph { color: #475569; font-size: 1.05rem; line-height: 1.7; margin-bottom: 10px; }
+.about-title { font-size: clamp(24px, 4vw, 36px); line-height: 1.12; color: var(--primary); margin-bottom: 12px; font-weight: 800; }
+.about-paragraph { color: var(--secondary); font-size: 1.05rem; line-height: 1.7; margin-bottom: 10px; }
 .about-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 14px 0 18px; }
-.about-feature { background: #ffffff; border: 1px solid rgba(3,22,35,0.08); border-radius: 12px; box-shadow: 0 10px 24px rgba(3,22,35,0.06); padding: 16px; text-align: center; transition: box-shadow 200ms ease, transform 200ms ease; }
+.about-feature { background: #ffffff; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 10px 24px rgba(3,22,35,0.06); padding: 16px; text-align: center; transition: box-shadow 200ms ease, transform 200ms ease; }
 .about-feature:hover { transform: translateY(-2px); box-shadow: 0 18px 42px rgba(3,22,35,0.10); }
-.about-feature__icon { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; margin: 0 auto 10px; background: #f7fafd; border: 1px solid rgba(3,22,35,0.06); color: #083247; }
-.about-feature__title { margin: 6px 0; font-weight: 700; color: #0f1724; font-size: 1rem; }
-.about-feature__desc { color: #475569; font-size: 0.95rem; }
-.about-features .about-feature:nth-child(1) .about-feature__icon { color: #16a34a; }
-.about-features .about-feature:nth-child(2) .about-feature__icon { color: #2563eb; }
-.about-features .about-feature:nth-child(3) .about-feature__icon { color: #f97316; }
-.about-cta { display: inline-block; margin-top: 6px; }
-.button.button--dark { background: #0f1724; color: #ffffff; border-radius: 999px; padding: 0.8rem 1.25rem; border: 1px solid rgba(255,255,255,0.08); font-weight: 700; }
-.button.button--dark:hover { background: #16253a; }
+.about-feature__icon { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; margin: 0 auto 10px; background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+.about-feature__title { margin: 6px 0; font-weight: 700; color: var(--primary); font-size: 1rem; }
+.about-feature__desc { color: var(--secondary); font-size: 0.95rem; }
+.about-features .about-feature:nth-child(2) .about-feature__icon { color: var(--accent-dark); }
+.about-features .about-feature:nth-child(3) .about-feature__icon { color: var(--accent); }
+.about-cta { display: inline-block; margin-top: 6px; background: var(--accent); color: #ffffff; border-radius: 999px; padding: 0.8rem 1.25rem; border: 1px solid rgba(0,0,0,0.06); font-weight: 700; }
+.about-cta:hover { background: var(--accent-dark); }
 .hero--upgrade {
   background: linear-gradient(120deg, #eaf4fb 0%, #f7fafd 100%);
   border-radius: 2rem;
@@ -494,8 +498,9 @@ body.page-contato {
 .section--services .service-stack { position: relative; overflow: hidden; }
 .section--services .service-stack .service-bg { transition: opacity 0.5s ease; }
 .section--services .service-stack .service-overlay { transition: opacity 0.5s ease; }
+.section--services .service-stack .service-overlay { display: flex; align-items: center; justify-content: center; z-index: 4 !important; pointer-events: none; }
 .section--services .service-stack:hover .service-bg { opacity: 1; transform: scale(1.03); }
-.section--services .service-stack:hover .service-overlay { opacity: 1; }
+  .section--services .service-stack:hover .service-overlay { opacity: 1; }
 .section--services .service-stack h3 { margin: 0.35rem 0 0.4rem; color: #0f1724; }
 .section--services .service-stack p { color: #475569; }
 .section--services .service-stack ul { margin: 0.6rem 0 0 0; padding-left: 1.15rem; color: #475569; }
@@ -548,7 +553,7 @@ body.page-contato {
   z-index: 3;
 }
 
-  /* Dark content panel inside cards for legibility over images */
+/* Dark content panel inside cards for legibility over images */
   .section--services .service-content {
     background: rgba(7,20,30,0.78); /* dark translucent panel */
     padding: 1rem 1rem 1.1rem 1rem;
@@ -565,6 +570,24 @@ body.page-contato {
   .section--services .service-stack:hover .service-content {
     background: rgba(4,10,16,0.84);
   }
+
+/* Overlay panel content (inside .service-overlay) */
+.section--services .service-overlay .overlay-panel {
+  background: rgba(7,20,30,0.92);
+  color: #f8fafc;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  width: calc(100% - 2rem);
+  max-width: 560px;
+  box-shadow: 0 18px 48px rgba(3,22,35,0.32);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 220ms ease, transform 220ms ease;
+  text-align: left;
+}
+.section--services .service-overlay .overlay-panel h3,
+.section--services .service-overlay .overlay-panel p { color: #f8fafc; margin: 0.25rem 0; }
+.section--services .service-stack:hover .service-overlay .overlay-panel { opacity: 1; transform: translateY(0); }
 
   /* Apply the same dark content panel style to the services on servicos.html */
   .servicos-fivesystems .service-content {
@@ -598,6 +621,39 @@ body.page-contato {
 /* Icon wrapper subtle scale on hover (mimics group-hover scale) */
 .section--services .service-icon { transition: transform 220ms ease; will-change: transform; }
 .section--services .service-stack:hover .service-icon { transform: scale(1.08); }
+
+/* Request: dark inner panel inside each card within .services-cards */
+.section--services.servicos-fivesystems .services-cards .service-content {
+  background: #0a1622; /* solid dark panel */
+  color: #f8fafc;
+  padding: 1rem 1rem 1.1rem;
+  border-radius: 10px;
+}
+.section--services.servicos-fivesystems .services-cards .service-content h3,
+.section--services.servicos-fivesystems .services-cards .service-content p,
+.section--services.servicos-fivesystems .services-cards .service-content ul,
+.section--services.servicos-fivesystems .services-cards .service-content li {
+  color: #f8fafc !important;
+}
+.section--services.servicos-fivesystems .services-cards .service-stack:hover .service-content {
+  background: #071019;
+}
+
+/* Prefer dedicated inner panel instead of coloring entire content */
+.section--services.servicos-fivesystems .services-cards .service-content { background: transparent; color: inherit; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+
+/* Dark inner panel inside each card */
+.section--services.servicos-fivesystems .services-cards .card-dark {
+  background: #0a1622;
+  color: #f8fafc;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  margin-top: auto; /* pins to bottom of card content */
+}
+.section--services.servicos-fivesystems .services-cards .card-dark h3,
+.section--services.servicos-fivesystems .services-cards .card-dark p,
+.section--services.servicos-fivesystems .services-cards .card-dark ul,
+.section--services.servicos-fivesystems .services-cards .card-dark li { color: #f8fafc !important; }
 
 /* Alignments for services cards: center header, left body for readability */
 .section--services.servicos-fivesystems .service-stack { text-align: left; }
