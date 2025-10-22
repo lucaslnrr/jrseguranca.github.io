@@ -55,10 +55,10 @@
           <li><a class="nav__link" href="sobre.html">Sobre</a></li>
           <li><a class="nav__link" href="servicos.html">Serviços</a></li>
           <li><a class="nav__link" href="contato.html">Contato</a></li>
-          <li><a class="button button--primary nav__cta-mobile" href="contato.html#formulario">Agendar consulta</a></li>
+          <li><a class="button button--primary nav__cta-mobile" href="contato.html#formulario">Fale Conosco</a></li>
         </ul>
       </nav>
-      <a class="button button--primary nav__cta" href="contato.html#formulario">Agendar consulta</a>
+      <a class="button button--primary nav__cta" href="contato.html#formulario">Fale Conosco</a>
       <button class="nav-toggle" type="button" aria-label="Alternar menu" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span><span></span></button>
     </div>
   </header>
@@ -83,8 +83,7 @@
               <h3>Gest&atilde;o do eSocial</h3>
               <p>Detecção de incêndio, alarmes e exaustão para centro comercial, conforme normas.</p>
               <div class="project-meta">
-                <span class="meta">📍 Vitória, ES</span>
-                <span class="meta">📅 2024</span>
+               
               </div>
             </div>
           </article>
@@ -100,8 +99,7 @@
               <h3>Inspe&ccedil;&otilde;es T&eacute;cnicas</h3>
               <p>Sistema de climatização VRF e ventilação para prédio corporativo com eficiência energética.</p>
               <div class="project-meta">
-                <span class="meta">📍 Serra, ES</span>
-                <span class="meta">📅 2024</span>
+           
               </div>
             </div>
           </article>
@@ -117,8 +115,7 @@
               <h3>Elabora&ccedil;&atilde;o de Programas e Laudos</h3>
               <p>Projeto e instalação de redes de água fria e esgoto, aquecimento e acabamentos premium.</p>
               <div class="project-meta">
-                <span class="meta">📍 Vitória, ES</span>
-                <span class="meta">📅 2023</span>
+      
               </div>
             </div>
           </article>
@@ -134,8 +131,7 @@
               <h3>Assessoria em Seguran&ccedil;a do Trabalho</h3>
               <p>Fabricação e montagem de estruturas metálicas com passarelas e controle de qualidade.</p>
               <div class="project-meta">
-                <span class="meta">📍 Vila Velha, ES</span>
-                <span class="meta">📅 2023</span>
+          
               </div>
             </div>
           </article>
@@ -151,8 +147,7 @@
               <h3>Treinamentos de Seguran&ccedil;a</h3>
               <p>Automação predial para iluminação, climatização e segurança com supervisão centralizada.</p>
               <div class="project-meta">
-                <span class="meta">📍 Vitória, ES</span>
-                <span class="meta">📅 2022</span>
+              
               </div>
             </div>
           </article>
@@ -168,8 +163,7 @@
               <h3>Acompanhamento de Execu&ccedil;&atilde;o de Obra</h3>
               <p>Ventilação controlada para ambientes críticos hospitalares, assegurando qualidade do ar.</p>
               <div class="project-meta">
-                <span class="meta">📍 Vitória, ES</span>
-                <span class="meta">📅 2022</span>
+                
               </div>
             </div>
           </article>
@@ -253,6 +247,26 @@
       if (closeBtn) closeBtn.addEventListener('click', closeModal);
       modal.addEventListener('click', function (ev) { if (ev.target === modal) closeModal(); });
       document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') closeModal(); });
+    }());
+  </script>
+  <script>
+    // Ensure each card description matches its title/topic
+    (function(){
+      var descs = [
+        'Gest\u00E3o completa de eventos, prazos e conformidade no eSocial.',
+        'Inspe\u00E7\u00F5es peri\u00F3dicas em equipamentos e ambientes para identificar riscos e priorizar corre\u00E7\u00F5es.',
+        'PPRA, PCMSO, LTCAT e demais laudos t\u00E9cnicos para conformidade legal.',
+        'Pol\u00EDticas, gest\u00E3o de riscos e atendimento \u00E0s NRs com monitoramento cont\u00EDnuo.',
+        'Capacita\u00E7\u00F5es pr\u00E1ticas e te\u00F3ricas conforme NRs, com simula\u00E7\u00F5es e certifica\u00E7\u00E3o.',
+        'Vistorias, relat\u00F3rios e coordena\u00E7\u00E3o t\u00E9cnica garantindo execu\u00E7\u00E3o conforme projeto, seguran\u00E7a e prazos.'
+      ];
+      try {
+        var bodies = document.querySelectorAll('.project-body');
+        bodies.forEach(function(body, idx){
+          var p = body.querySelector('p');
+          if (p && descs[idx]) { p.textContent = descs[idx]; }
+        });
+      } catch (e) {}
     }());
   </script>
 </body>
