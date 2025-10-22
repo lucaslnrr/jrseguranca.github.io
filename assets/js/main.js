@@ -1,4 +1,4 @@
-ï»¿// JR SeguranÃ§a â€“ navegaÃ§Ã£o e interaÃ§Ãµes bÃ¡sicas
+// JR Segurança – navegação e interações básicas
 
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.nav-toggle');
@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
         valid = false;
       }
       if (!email || !validateEmail(email.value.trim())) {
-        setError('error-email', 'Informe um e-mail vÃ¡lido.');
+        setError('error-email', 'Informe um e-mail válido.');
         valid = false;
       }
       if (!mensagem || !mensagem.value.trim()) {
@@ -322,11 +322,11 @@ document.addEventListener('DOMContentLoaded', () => {
         valid = false;
       }
       if (telefone && telefone.value && telefone.value.trim().length < 6) {
-        setError('error-telefone', 'Informe um telefone vÃ¡lido ou deixe em branco.');
+        setError('error-telefone', 'Informe um telefone válido ou deixe em branco.');
         valid = false;
       }
       if (consent && !consent.checked) {
-        setError('error-consent', 'Ã‰ necessÃ¡rio autorizar o contato para prosseguir.');
+        setError('error-consent', 'É necessário autorizar o contato para prosseguir.');
         valid = false;
       }
 
@@ -418,7 +418,11 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   try {
     const stacks = Array.from(document.querySelectorAll('.section--services .service-stack'));
-    stacks.forEach((stack) => {
+    const titles = [ 'Gestão do eSocial','Inspeções Técnicas','Elaboração de Programas e Laudos','Assessoria em Segurança do Trabalho','Treinamentos de Segurança','Acompanhamento de Execução de Obra' ];
+    const descs = [
+      '', '', '', '', '', ''
+    ];
+    stacks.forEach((stack, idx) => {
       const overlay = stack.querySelector('.service-overlay');
       if (!overlay) return;
       let panel = overlay.querySelector('.overlay-panel');
@@ -427,52 +431,18 @@ document.addEventListener('DOMContentLoaded', () => {
         panel.className = 'overlay-panel';
         overlay.appendChild(panel);
       }
-      const titleEl = stack.querySelector('.service-stack__head h3');
-      const descEl = stack.querySelector('.service-stack__head p');
-      const title = titleEl ? titleEl.textContent.trim() : '';
-      const desc = descEl ? descEl.textContent.trim() : '';
-      panel.innerHTML = `${title ? `<h3>${title}</h3>` : ''}${desc ? `<p>${desc}</p>` : ''}`;
-      if (descEl) descEl.style.display = 'none';
+      const t = titles[idx] || '';
+      const d = descs[idx] || '';
+      panel.innerHTML = `${t ? `<h3>${t}</h3>` : ''}${d ? `<p>${d}</p>` : ''}`;
     });
   } catch (e) {
     // no-op
   }
 });
 
-// Inject dark inner panel into each services card (.service-stack) with specified texts
-document.addEventListener('DOMContentLoaded', () => {
-  try {
-    const stacks = Array.from(document.querySelectorAll('.section--services .service-stack'));
-    const titles = [
-      'Gestao do eSocial',
-      'Inspecoes Tecnicas',
-      'Elaboracao de Programas e Laudos',
-      'Assessoria em Seguranca do Trabalho',
-      'Treinamentos de Seguranca',
-      'Acompanhamento de Execucao de Obra'
-    ];
-    const descs = [
-      'Gestao completa de eventos, prazos e conformidade.',
-      'Inspecoes periodicas para identificar riscos e priorizar correcoes.',
-      'PPRA, PCMSO, LTCAT e laudos tecnicos para conformidade.',
-      'Politicas, gestao de riscos e atendimento as NRs.',
-      'Capacitacoes praticas e teoricas por NR.',
-      'Vistorias, relatorios e coordenacao tecnica.'
-    ];
-    stacks.forEach((stack, idx) => {
-      const contentEl = stack.querySelector('.service-content');
-      if (!contentEl) return;
-      let panel = contentEl.querySelector('.card-dark');
-      if (!panel) {
-        panel = document.createElement('div');
-        panel.className = 'card-dark';
-        contentEl.appendChild(panel);
-      }
-      const t = titles[idx] || 'Servico';
-      const d = descs[idx] || '';
-      panel.innerHTML = `<strong>${t}</strong>${d ? `<p>${d}</p>` : ''}`;
-    });
-  } catch (e) {
+} catch (e) {
     // no-op
   }
 });
+
+

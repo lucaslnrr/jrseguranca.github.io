@@ -571,6 +571,18 @@ body.page-contato {
     background: rgba(4,10,16,0.84);
   }
 
+  /* Wider, centered content panel inside cards */
+  .section--services .service-content {
+    width: calc(100% - 2rem);
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 900px) {
+    .section--services .service-content { max-width: 92%; width: auto; }
+  }
+
+
 /* Overlay panel content (inside .service-overlay) */
 .section--services .service-overlay .overlay-panel {
   background: rgba(7,20,30,0.92);
@@ -640,7 +652,19 @@ body.page-contato {
 }
 
 /* Prefer dedicated inner panel instead of coloring entire content */
-.section--services.servicos-fivesystems .services-cards .service-content { background: transparent; color: inherit; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.section--services.servicos-fivesystems .services-cards .service-content {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  /* widen and center the service-content container */
+  width: 95%;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* Dark inner panel inside each card */
 .section--services.servicos-fivesystems .services-cards .card-dark {
@@ -649,11 +673,20 @@ body.page-contato {
   padding: 0.9rem 1rem;
   border-radius: 10px;
   margin-top: auto; /* pins to bottom of card content */
+  /* widen and center the dark text box */
+  width: 95%;
+  max-width: 720px;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .section--services.servicos-fivesystems .services-cards .card-dark h3,
 .section--services.servicos-fivesystems .services-cards .card-dark p,
 .section--services.servicos-fivesystems .services-cards .card-dark ul,
 .section--services.servicos-fivesystems .services-cards .card-dark li { color: #f8fafc !important; }
+/* Force all nested text inside the dark panel to be white */
+.section--services.servicos-fivesystems .services-cards .card-dark,
+.section--services.servicos-fivesystems .services-cards .card-dark * { color: #f8fafc !important; }
 
 /* Alignments for services cards: center header, left body for readability */
 .section--services.servicos-fivesystems .service-stack { text-align: left; }
@@ -2911,3 +2944,18 @@ textarea.input {
 
 
 
+.services-cards .card-dark,
+.services-cards .card-dark * { color: #f8fafc !important; }
+
+/* Improve dark panel typography */
+.services-cards .card-dark strong {
+  display: block;
+  font-size: 1.08rem;
+  letter-spacing: -0.2px;
+}
+.services-cards .card-dark p {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(248,250,252,0.92) !important;
+}
