@@ -582,6 +582,31 @@ body.page-contato {
     .section--services .service-content { max-width: 92%; width: auto; }
   }
 
+  /* Centered panel over background image: show as a box with white centered text */
+  .section--services .service-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+    padding: 0.75rem 0;
+  }
+  .section--services .card-dark {
+    /* override inline styles safely for consistent appearance */
+    background: rgba(6,12,18,0.6) !important;
+    color: #ffffff !important;
+    padding: 1rem 1.25rem !important;
+    border-radius: 12px !important;
+    display: block !important;
+    text-align: center !important;
+    width: 70% !important;
+    max-width: 760px !important;
+    box-shadow: 0 8px 30px rgba(2,6,23,0.5) !important;
+  }
+  .section--services .card-dark strong { display:block; font-size:1.05rem; margin-bottom:0.45rem; }
+  .section--services .card-dark p { margin: 0; color: rgba(255,255,255,0.92) !important; }
+  .section--services .service-stack:hover .card-dark { background: rgba(6,12,18,0.72) !important; }
+
+
 
 /* Overlay panel content (inside .service-overlay) */
 .section--services .service-overlay .overlay-panel {
@@ -673,9 +698,23 @@ body.page-contato {
   padding: 0.9rem 1rem;
   border-radius: 10px;
   margin-top: auto; /* pins to bottom of card content */
-  /* widen and center the dark text box */
-  width: 95%;
-  max-width: 720px;
+/* ----- Projects grid (Five-Systems Projects page style) ----- */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+.project-card { background: #fff; border: none; border-radius: 12px; box-shadow: 0 8px 28px rgba(3,22,35,0.08); overflow: hidden; transition: box-shadow .3s ease, transform .3s ease; }
+.project-card:hover { box-shadow: 0 16px 48px rgba(3,22,35,0.14); transform: translateY(-6px); }
+.project-media { position: relative; overflow: hidden; }
+.project-media img { width: 100%; height: 16rem; object-fit: cover; transition: transform .5s ease; display: block; }
+.project-card:hover .project-media img { transform: scale(1.06); }
+.project-media .project-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.6) 8%, rgba(0,0,0,0.0) 45%, rgba(0,0,0,0.0) 100%); opacity: 0; transition: opacity .3s ease; }
+.project-card:hover .project-media .project-overlay { opacity: 1; }
+.project-body { padding: 1.1rem 1rem 1rem; }
+.project-body h3 { margin: 0 0 .35rem; font-size: 1.1rem; font-weight: 800; color: #0f1724; letter-spacing: -0.2px; }
+.project-body p { color: #475569; margin: 0 0 .75rem; line-height: 1.55; }
+.project-meta { display: flex; align-items: center; justify-content: space-between; color: #64748b; font-size: .9rem; }
+.project-meta .meta { display: inline-flex; align-items: center; gap: .35rem; }
+.project-meta .meta i { font-size: 1rem; color: #64748b; }  /* desired: make the dark text box occupy ~70% of the card on desktop */
+  width: 70% !important;
+  max-width: 760px;
   align-self: center;
   margin-left: auto;
   margin-right: auto;
@@ -708,11 +747,94 @@ body.page-contato {
 /* Slightly larger card titles for readability */
 .section--services.servicos-fivesystems .service-stack__head h3 { font-size: 1.15rem; color: #0f1724; }
 
+/* ----- Project-style cards (image-first) ----- */
+.section--services.servicos-fivesystems .services-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 1.25rem;
+}
+.section--services.servicos-fivesystems .services-cards .service-stack {
+  /* make the card an image container */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: 0 12px 36px rgba(2,6,23,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  min-height: 320px;
+  display: block;
+}
+.section--services.servicos-fivesystems .services-cards .service-bg {
+  position: absolute !important;
+  inset: 0 !important;
+  background-size: cover !important;
+  background-position: center !important;
+  transform-origin: center center;
+  transition: transform 520ms ease, opacity 520ms ease;
+  opacity: 0.9;
+}
+.section--services.servicos-fivesystems .services-cards .service-stack::before {
+  /* gradient overlay to ensure text contrast */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(3,8,12,0.18) 0%, rgba(3,8,12,0.45) 60%, rgba(3,8,12,0.72) 100%);
+  pointer-events: none;
+}
+.section--services.servicos-fivesystems .services-cards .service-stack:hover .service-bg { transform: scale(1.04); }
+
+/* Centered dark panel (the 'black div') */
+.section--services.servicos-fivesystems .services-cards .card-dark {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 28px;
+  width: 70% !important;
+  max-width: 700px;
+  background: rgba(6,12,18,0.64);
+  padding: 1.05rem 1.25rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.45);
+}
+.section--services.servicos-fivesystems .services-cards .card-dark strong { font-size: 1.05rem; display:block; margin-bottom:0.35rem; }
+.section--services.servicos-fivesystems .services-cards .card-dark p { margin:0; color: rgba(255,255,255,0.95); }
+
+@media (max-width: 900px) {
+  .section--services.servicos-fivesystems .services-cards .service-stack { min-height: 240px; }
+  .section--services.servicos-fivesystems .services-cards .card-dark { width: 92% !important; bottom: 18px; }
+}
+
+
 
 
 
 
   min-width: 1.5em;
+
+/* ===== Final override: force the centered dark panel to be 70% on desktop ===== */
+/* This lives at the end of the stylesheet to beat earlier conflicting rules. */
+body > main > section.section--services.servicos-fivesystems .services-cards .service-stack {
+  position: relative; /* ensure the absolute card is anchored to the card */
+}
+body > main > section.section--services.servicos-fivesystems .services-cards .service-stack .card-dark {
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  bottom: 28px !important;
+  width: 70% !important;
+  max-width: 760px !important;
+  box-sizing: border-box !important;
+  z-index: 6 !important; /* sit above overlays */
+  margin: 0 !important;
+}
+@media (max-width: 900px) {
+  body > main > section.section--services.servicos-fivesystems .services-cards .service-stack .card-dark {
+    width: 92% !important;
+    bottom: 18px !important;
+  }
+}
   min-height: 1.5em;
   color: #19c0d7;
   flex-shrink: 0;
@@ -720,6 +842,18 @@ body.page-contato {
 @media (max-width: 600px) {
   .services__list li {
     font-size: 1rem;
+
+@media (max-width: 900px) {
+  .section--services .card-dark { width: 92% !important; }
+}
+
+/* Strong override near file end to ensure desired proportions */
+.section--services.servicos-fivesystems .services-cards .card-dark {
+  width: 70% !important;
+}
+@media (max-width: 900px) {
+  .section--services.servicos-fivesystems .services-cards .card-dark { width: 92% !important; }
+}
     padding: 0.9rem 1rem;
   }
 }
@@ -2959,3 +3093,30 @@ textarea.input {
   line-height: 1.5;
   color: rgba(248,250,252,0.92) !important;
 }
+
+/* ----- Projects grid (Five-Systems Projects page style) ----- */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+.project-card { background: #fff; border: none; border-radius: 12px; box-shadow: 0 8px 28px rgba(3,22,35,0.08); overflow: hidden; transition: box-shadow .3s ease, transform .3s ease; }
+.project-card:hover { box-shadow: 0 16px 48px rgba(3,22,35,0.14); transform: translateY(-6px); }
+.project-media { position: relative; overflow: hidden; }
+.project-media img { width: 100%; height: 16rem; object-fit: cover; transition: transform .5s ease; display: block; }
+.project-card:hover .project-media img { transform: scale(1.06); }
+.project-media .project-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.6) 8%, rgba(0,0,0,0.0) 45%, rgba(0,0,0,0.0) 100%); opacity: 0; transition: opacity .3s ease; }
+.project-card:hover .project-media .project-overlay { opacity: 1; }
+.project-logo { display: none; position: absolute; top: .75rem; right: .75rem; display: inline-block; background: rgba(255,255,255,0.9); border-radius: 6px; padding: 4px; box-shadow: 0 6px 18px rgba(3,22,35,0.18); }
+.project-logo img { display: none; width: 26px; height: 26px; display: block; border-radius: 4px; }
+.project-view { position: absolute; bottom: .8rem; right: .8rem; opacity: 0; transition: opacity .3s ease; background: #ffffff; color: #0f1724; border: 0; border-radius: 999px; padding: .5rem .6rem; box-shadow: 0 8px 24px rgba(3,22,35,0.22); cursor: pointer; }
+.project-view i { font-size: 1rem; }
+.project-card:hover .project-view { opacity: 1; }
+.project-body { padding: 1.1rem 1rem 1rem; }
+.project-body h3 { margin: 0 0 .35rem; font-size: 1.1rem; font-weight: 800; color: #0f1724; letter-spacing: -0.2px; }
+.project-body p { color: #475569; margin: 0 0 .75rem; line-height: 1.55; }
+.project-meta { display: flex; align-items: center; justify-content: space-between; color: #64748b; font-size: .9rem; }
+.project-meta .meta { display: inline-flex; align-items: center; gap: .35rem; }
+.project-meta .meta i { font-size: 1rem; color: #64748b; }
+
+/* Image modal */
+.project-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.82); display: none; align-items: center; justify-content: center; z-index: 9999; }
+.project-modal.is-open { display: flex; }
+.project-modal__image { max-width: 92vw; max-height: 86vh; border-radius: 10px; box-shadow: 0 24px 64px rgba(0,0,0,0.35); object-fit: contain; }
+.project-modal__close { position: absolute; top: 1rem; right: 1rem; background: transparent; color: #fff; border: 0; font-size: 2rem; line-height: 1; cursor: pointer; }

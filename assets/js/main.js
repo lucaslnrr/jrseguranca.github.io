@@ -1,4 +1,4 @@
-// JR Segurança – navegação e interações básicas
+// JR Seguranï¿½a ï¿½ navegaï¿½ï¿½o e interaï¿½ï¿½es bï¿½sicas
 
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.nav-toggle');
@@ -202,7 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
       formSuccess.hidden = true;
       // remove query param to avoid repeated message on refresh
       if (history.replaceState) {
-        const url = new URL(window.location);
+        // use href explicitly to be robust when opened from file://
+        const url = new URL(window.location.href);
         url.searchParams.delete('enviado');
         history.replaceState({}, document.title, url.pathname + url.search + url.hash);
       }
@@ -314,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
         valid = false;
       }
       if (!email || !validateEmail(email.value.trim())) {
-        setError('error-email', 'Informe um e-mail válido.');
+        setError('error-email', 'Informe um e-mail vï¿½lido.');
         valid = false;
       }
       if (!mensagem || !mensagem.value.trim()) {
@@ -322,11 +323,11 @@ document.addEventListener('DOMContentLoaded', () => {
         valid = false;
       }
       if (telefone && telefone.value && telefone.value.trim().length < 6) {
-        setError('error-telefone', 'Informe um telefone válido ou deixe em branco.');
+        setError('error-telefone', 'Informe um telefone vï¿½lido ou deixe em branco.');
         valid = false;
       }
       if (consent && !consent.checked) {
-        setError('error-consent', 'É necessário autorizar o contato para prosseguir.');
+        setError('error-consent', 'ï¿½ necessï¿½rio autorizar o contato para prosseguir.');
         valid = false;
       }
 
@@ -379,13 +380,28 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!bgEl) return;
       const src = bgEl.getAttribute('data-bg');
       if (!src) return;
-      // set background-image and mark loaded
-      bgEl.style.backgroundImage = `url('${src}')`;
-      // small timeout to allow image to paint then reveal
-      bgEl.addEventListener('load', () => {}, { once: true });
-      // reveal visually
-      requestAnimationFrame(() => { bgEl.style.opacity = '1'; });
-      card.setAttribute('data-bg-loaded', 'true');
+      // Preload image via Image() then set as background â€” works for file:// and avoids relying on element load events
+      const pre = new Image();
+      pre.onload = () => {
+        try {
+          bgEl.style.backgroundImage = `url('${src}')`;
+        } catch (e) {
+          bgEl.setAttribute('style', (bgEl.getAttribute('style') || '') + `;background-image:url('${src}')`);
+        }
+        requestAnimationFrame(() => { bgEl.style.opacity = '1'; });
+        card.setAttribute('data-bg-loaded', 'true');
+      };
+      pre.onerror = () => {
+        // On error, still attempt to set background so the UI degrades gracefully
+        try {
+          bgEl.style.backgroundImage = `url('${src}')`;
+        } catch (e) {
+          bgEl.setAttribute('style', (bgEl.getAttribute('style') || '') + `;background-image:url('${src}')`);
+        }
+        requestAnimationFrame(() => { bgEl.style.opacity = '1'; });
+        card.setAttribute('data-bg-loaded', 'true');
+      };
+      pre.src = src;
     };
 
     const onEnter = (entries, obs) => {
@@ -418,7 +434,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   try {
     const stacks = Array.from(document.querySelectorAll('.section--services .service-stack'));
-    const titles = [ 'Gestão do eSocial','Inspeções Técnicas','Elaboração de Programas e Laudos','Assessoria em Segurança do Trabalho','Treinamentos de Segurança','Acompanhamento de Execução de Obra' ];
+    const titles = [ 'Gestï¿½o do eSocial','Inspeï¿½ï¿½es Tï¿½cnicas','Elaboraï¿½ï¿½o de Programas e Laudos','Assessoria em Seguranï¿½a do Trabalho','Treinamentos de Seguranï¿½a','Acompanhamento de Execuï¿½ï¿½o de Obra' ];
     const descs = [
       '', '', '', '', '', ''
     ];
@@ -440,9 +456,40 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-} catch (e) {
-    // no-op
-  }
-});
 
 
+// Projects: image modal open/close and view buttons
+try {
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('project-modal');
+    if (!modal) return;
+    const imgEl = modal.querySelector('.project-modal__image');
+    const closeBtn = modal.querySelector('.project-modal__close');
+    const open = (src, alt) => {
+      if (imgEl) {
+        imgEl.setAttribute('src', src || '');
+        imgEl.setAttribute('alt', alt || 'Projeto ampliado');
+      }
+      modal.classList.add('is-open');
+      modal.removeAttribute('hidden');
+    };
+    const close = () => {
+      modal.classList.remove('is-open');
+      modal.setAttribute('hidden', 'hidden');
+      if (imgEl) imgEl.setAttribute('src', '');
+    };
+    document.querySelectorAll('.project-view').forEach((btn) => {
+      btn.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        const media = btn.closest('.project-media');
+        const img = media ? media.querySelector('img') : null;
+        const src = img ? img.getAttribute('src') : '';
+        const alt = img ? img.getAttribute('alt') : '';
+        open(src, alt);
+      });
+    });
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', (ev) => { if (ev.target === modal) close(); });
+    document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') close(); });
+  });
+} catch (e) {}
