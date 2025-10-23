@@ -210,6 +210,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 6000);
   }
 
+  // Inject a vertical image carousel into the Services section on the homepage, if missing
+  try {
+    const isHome = (function () {
+      try {
+        const path = (window.location && window.location.pathname) ? window.location.pathname : '';
+        const last = path.split('/').pop();
+        return !last || /^index\.html?$/i.test(last);
+      } catch (_) { return true; }
+    })();
+
+    if (isHome) {
+      const servicesWrapper = document.querySelector('.section.services .services__wrapper-upgrade');
+      if (servicesWrapper && !servicesWrapper.querySelector('.services__art')) {
+        const art = document.createElement('div');
+        art.className = 'services__art';
+        art.innerHTML = [
+          '<div class="services__carousel" data-carousel="vertical" aria-label="Galeria de solu\u00e7\u00f5es">',
+          '  <div class="services__carousel-viewport">',
+          '    <div class="services__carousel-track">',
+          '      <div class="services__carousel-slide">',
+          '        <img src="assets/img/carousel1.jpeg" alt="" />',
+          '      </div>',
+          '      <div class="services__carousel-slide">',
+          '        <img src="assets/img/carousel2.jpeg" alt="" />',
+          '      </div>',
+          '      <div class="services__carousel-slide">',
+          '        <img src="assets/img/carousel3.jpeg" alt="" />',
+          '      </div>',
+          '    </div>',
+          '  </div>',
+          '  <button class="services__carousel-control services__carousel-control--prev" type="button" aria-label="Anterior">',
+          '    <i class="bi bi-chevron-up" aria-hidden="true"></i>',
+          '  </button>',
+          '  <button class="services__carousel-control services__carousel-control--next" type="button" aria-label="Pr\u00f3ximo">',
+          '    <i class="bi bi-chevron-down" aria-hidden="true"></i>',
+          '  </button>',
+          '  <div class="services__carousel-dots" role="tablist" aria-label="Navega\u00e7\u00e3o do carrossel"></div>',
+          '</div>'
+        ].join('\n');
+        servicesWrapper.appendChild(art);
+      }
+    }
+  } catch (_) {}
+
   // vertical services carousel initializer
   document.querySelectorAll('[data-carousel="vertical"]').forEach((carousel) => {
     const track = carousel.querySelector('.services__carousel-track');
@@ -223,9 +267,25 @@ document.addEventListener('DOMContentLoaded', () => {
     let t = null;
     const interval = 5000;
 
+    // Compute cumulative offsets (pixels) for each slide to support variable heights
+    let offsets = [];
+    const computeOffsets = () => {
+      offsets = [];
+      let acc = 0;
+      slides.forEach((s, i) => {
+        offsets.push(acc);
+        // use offsetHeight to include padding/border
+        acc += s.offsetHeight;
+      });
+      // ensure track has min-height so percent flex-basis works
+      return offsets;
+    };
+
     const go = (i) => {
       idx = (i + total) % total;
-      track.style.transform = `translateY(-${idx * 100}%)`;
+      if (!offsets || offsets.length !== total) computeOffsets();
+      const offset = offsets[idx] || 0;
+      track.style.transform = `translateY(-${offset}px)`;
       if (dots) Array.from(dots.children).forEach((b, j) => b.setAttribute('aria-current', j === idx ? 'true' : 'false'));
     };
 
@@ -253,6 +313,19 @@ document.addEventListener('DOMContentLoaded', () => {
     carousel.addEventListener('mouseleave', start);
     carousel.addEventListener('focusin', stop);
     carousel.addEventListener('focusout', start);
+
+    // Recalculate offsets on load and resize so transforms stay correct
+    window.addEventListener('resize', () => {
+      computeOffsets();
+      // ensure current position is reapplied after layout change
+      requestAnimationFrame(() => go(idx));
+    });
+
+    // initial offsets computation after a short delay to allow images to load
+    window.setTimeout(() => {
+      computeOffsets();
+      go(0);
+    }, 50);
 
     document.addEventListener('keydown', (ev) => {
       if (!carousel.contains(document.activeElement)) return;
@@ -491,5 +564,14 @@ try {
     if (closeBtn) closeBtn.addEventListener('click', close);
     modal.addEventListener('click', (ev) => { if (ev.target === modal) close(); });
     document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') close(); });
+  });
+} catch (e) {}
+// Ensure vertical carousel images preload (avoid blank slides)
+try {
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.services__carousel .services__carousel-slide img').forEach(function(img){
+      try { img.setAttribute('loading','eager'); img.setAttribute('decoding','sync'); } catch(e) {}
+      if (!img.complete) { var pre = new Image(); pre.src = img.src; }
+    });
   });
 } catch (e) {}

@@ -857,6 +857,65 @@ body > main > section.section--services.servicos-fivesystems .services-cards .se
     padding: 0.9rem 1rem;
   }
 }
+
+/* Height tweak for homepage Services carousel */
+.section.services .services__carousel { height: 640px; }
+@media (max-width: 900px) { .section.services .services__carousel { height: 420px; } }
+@media (max-width: 600px) { .section.services .services__carousel { height: 340px; } }
+
+/* Services section: richer gradient background and accent panel */
+.section.services {
+  background: linear-gradient(180deg, #e7f7f9 0%, #f7fafd 100%);
+}
+.section.services .services__panel {
+  /* stronger, more colorful gradient */
+  background: linear-gradient(140deg,
+    rgba(6, 82, 63, 0.22) 0%,
+    rgba(14, 90, 75, 0.20) 38%,
+    rgba(25, 192, 215, 0.22) 100%
+  );
+  width: min(900px, 66%);
+  filter: saturate(1.05);
+}
+@media (min-width: 1300px) {
+  .section.services .services__panel { width: min(1000px, 60%); }
+}
+
+/* Services: improved typography and list styling */
+.section.services .services__copy { max-width: 760px; }
+.section.services .services__title {
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  color: var(--primary);
+}
+.section.services .services__text {
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: var(--secondary);
+}
+.section.services .services__list {
+  gap: 14px 18px;
+}
+.section.services .services__list li {
+  background: #fbfdff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.6rem 0.8rem;
+  box-shadow: 0 6px 18px rgba(3,22,35,0.06);
+  transition: background 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+.section.services .services__list li:hover {
+  background: #f4f9fb;
+  box-shadow: 0 12px 28px rgba(3,22,35,0.10);
+  transform: translateY(-1px);
+}
+.section.services .services__list svg {
+  color: var(--accent);
+}
+@media (max-width: 900px) {
+  .section.services .services__title { font-size: clamp(1.6rem, 4.6vw, 2.2rem); }
+  .section.services .services__text { font-size: 1.02rem; }
+}
 .services__wrapper-upgrade {
   display: flex;
   flex-wrap: wrap;
@@ -1769,6 +1828,8 @@ button {
   width: 100%;
   height: clamp(320px, 45vw, 520px);
   object-fit: cover;
+  /* Show the bottom of the image in the hero slider */
+  object-position: center bottom;
   display: block;
 }
 
@@ -2133,6 +2194,13 @@ button {
 @media (max-width: 640px) {
   .services__carousel { height: 260px; border-radius: 16px; }
 }
+
+/* Ensure each slide exactly matches the viewport container height so pixel translations align reliably */
+.services__carousel-viewport,
+.services__carousel-track,
+.services__carousel-slide { height: 100%; box-sizing: border-box; }
+.services__carousel-slide { min-height: 0; }
+.services__carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .cards-grid {
   display: grid;
@@ -2914,7 +2982,8 @@ textarea.input {
 
 #conteudo > section.hero--upgrade .hero__slider-viewport { height: 100%; }
 #conteudo > section.hero--upgrade .hero__slide { height: 100%; }
-#conteudo > section.hero--upgrade .hero__slide img { height: 100%; }
+/* On index hero, anchor images to the bottom of the frame */
+#conteudo > section.hero--upgrade .hero__slide img { height: 100%; object-position: center bottom; object-fit: cover; }
 
 /* === Index hero overrides: stronger white text palette === */
 #conteudo > section.hero--upgrade {
