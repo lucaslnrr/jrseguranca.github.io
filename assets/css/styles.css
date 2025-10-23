@@ -2863,6 +2863,29 @@ textarea.input {
   color: rgba(255, 255, 255, 0.78);
 }
 
+/* Ensure footer credits links inherit footer color */
+.footer__bottom a {
+  color: inherit;
+}
+.footer__bottom a:hover,
+.footer__bottom a:focus-visible {
+  opacity: 0.85;
+}
+
+/* Footer credit line */
+.footer__credit {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #9ca3af; /* grey */
+  text-align: center;
+}
+.footer__credit a { color: inherit; }
+.footer__credit a:hover, .footer__credit a:focus-visible { opacity: 0.85; }
+
+/* Section wrapper for the credit below footer */
+.site-credit { padding: 12px 0; background: #a1a1a1bf; color: #074817; }
+.site-credit .footer__credit { color: inherit; }
+
 .social-links {
   display: inline-flex;
   gap: 14px;

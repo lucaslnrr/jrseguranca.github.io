@@ -62,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Footer credit is now static in HTML for each page
+
   const shouldUppercase = (element) => {
     if (!element || element.matches(':disabled,[readonly]')) return false;
     const optOut = element.getAttribute('data-uppercase');
