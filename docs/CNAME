@@ -1,5 +1,5 @@
-www.hsefranca.com
+www.jrseguranca.com
 
 git add docs/CNAME
-git commit -m "Update CNAME for hsefranca site"
-git push hsefranca main
+git commit -m "Update CNAME for jrseguranca site"
+git push https://github.com/lucaslnrr/jrseguranca.github.io.git main
