@@ -1,4 +1,4 @@
-// HSE França – navegação e interações básicas
+// JR Segurança – navegação e interações básicas
 
 document.addEventListener('DOMContentLoaded', () => {
   // Dismissible Novembro Azul banner

@@ -1110,7 +1110,7 @@ body > main > section.section--services.servicos-fivesystems .services-cards .se
 
 
 
-/* HSE França – Dentics-inspired landing layout */
+/* JR Segurança – Dentics-inspired landing layout */
 :root {
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --primary: #162233;
@@ -1138,7 +1138,7 @@ body > main > section.section--services.servicos-fivesystems .services-cards .se
   --primary: #122131;
   --secondary: #465468;
   --muted: #7a8899;
-  /* Accent follows global HSE França brand (blue) */
+  /* Accent follows global JR Segurança brand (blue) */
   --accent: #12397f;
   --accent-dark: #0c2859;
   --accent-soft: rgba(18, 57, 127, 0.08);
