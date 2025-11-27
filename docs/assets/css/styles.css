@@ -1116,9 +1116,9 @@ body > main > section.section--services.servicos-fivesystems .services-cards .se
   --primary: #162233;
   --secondary: #4a5668;
   --muted: #79859b;
-  --accent: #12397f;
-  --accent-dark: #0c2859;
-  --accent-soft: rgba(18, 57, 127, 0.1);
+  --accent: #2f994a;
+  --accent-dark: #1f6d34;
+  --accent-soft: rgba(47, 153, 74, 0.1);
   --surface: #ffffff;
   --surface-alt: #f4f7fb;
   --line: #e1e7f0;
@@ -1138,14 +1138,14 @@ body > main > section.section--services.servicos-fivesystems .services-cards .se
   --primary: #122131;
   --secondary: #465468;
   --muted: #7a8899;
-  /* Accent follows global JR Segurança brand (blue) */
-  --accent: #12397f;
-  --accent-dark: #0c2859;
-  --accent-soft: rgba(18, 57, 127, 0.08);
+  /* Accent remains brand but we introduce gradient + subtle outline */
+  --accent: #2f994a;
+  --accent-dark: #1e6c33;
+  --accent-soft: rgba(47, 153, 74, 0.08);
   /* Layered shadow scale for cards */
   --shadow-card: 0 4px 12px -2px rgba(17,27,39,0.06), 0 12px 32px -4px rgba(17,27,39,0.08), 0 28px 56px -10px rgba(17,27,39,0.08);
   --shadow-soft: 0 6px 18px -4px rgba(17,27,39,0.05), 0 20px 48px -6px rgba(17,27,39,0.07);
-  --shadow-focus: 0 0 0 4px rgba(18,57,127,0.18), 0 2px 8px rgba(17,27,39,0.25);
+  --shadow-focus: 0 0 0 4px rgba(47,153,74,0.18), 0 2px 8px rgba(17,27,39,0.25);
 }
 
 @media (max-width: 720px) {
@@ -1426,7 +1426,7 @@ button {
 .button--ghost {
   background: #fff;
   color: var(--accent);
-  border-color: rgba(18, 57, 127, 0.35);
+  border-color: rgba(47, 153, 74, 0.35);
 }
 
 .button--ghost:hover {
@@ -1437,9 +1437,9 @@ button {
   display: none;
   width: 48px;
   height: 48px;
-  background: rgba(18, 57, 127, 0.12);
+  background: rgba(47, 153, 74, 0.12);
   border-radius: 16px;
-  border: 1px solid rgba(18, 57, 127, 0.25);
+  border: 1px solid rgba(47, 153, 74, 0.25);
   padding: 12px;
   flex-direction: column;
   justify-content: space-between;
@@ -1975,7 +1975,7 @@ button {
   position: absolute;
   inset: 0;
   border-radius: 28px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(18, 57, 127, 0.25));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(47, 153, 74, 0.25));
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: -1;
@@ -2149,7 +2149,7 @@ button {
   content: "";
   position: absolute;
   inset: -40px 20% -60px -20%;
-  background: radial-gradient(circle at top left, rgba(18, 57, 127, 0.25), transparent 55%);
+  background: radial-gradient(circle at top left, rgba(47, 153, 74, 0.25), transparent 55%);
   filter: blur(40px);
   z-index: -1;
 }
@@ -2258,7 +2258,7 @@ button {
   width: 86px;
   height: 86px;
   border-radius: clamp(22px, 4vw, 32px);
-  background: rgba(18, 57, 127, 0.12);
+  background: rgba(47, 153, 74, 0.12);
   display: grid;
   place-items: center;
 }
@@ -2311,7 +2311,7 @@ button {
   height: 150px;
   object-fit: cover;
   border-radius: clamp(26px, 6vw, 42px);
-  background: rgba(18, 57, 127, 0.12);
+  background: rgba(47, 153, 74, 0.12);
   padding: 12px;
 }
 
@@ -2336,12 +2336,12 @@ button {
 }
 
 .team__carousel::-webkit-scrollbar-track {
-  background: rgba(18, 57, 127, 0.06);
+  background: rgba(47, 153, 74, 0.06);
   border-radius: 999px;
 }
 
 .team__carousel::-webkit-scrollbar-thumb {
-  background: rgba(18, 57, 127, 0.45);
+  background: rgba(47, 153, 74, 0.45);
   border-radius: 999px;
 }
 
@@ -2378,7 +2378,7 @@ button {
   position: relative;
   display: grid;
   gap: 18px;
-  background: linear-gradient(145deg, rgba(18, 57, 127, 0.12), rgba(18, 57, 127, 0.06));
+  background: linear-gradient(145deg, rgba(47, 153, 74, 0.12), rgba(47, 153, 74, 0.06));
   border-radius: var(--radius-lg);
   padding: clamp(28px, 6vw, 40px);
 }
@@ -2398,7 +2398,7 @@ button {
   width: 100%;
   padding: 14px 18px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(18, 57, 127, 0.3);
+  border: 1px solid rgba(47, 153, 74, 0.3);
   background: #fff;
   font: inherit;
   color: var(--primary);
@@ -2413,7 +2413,7 @@ button {
 .input:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(18, 57, 127, 0.15);
+  box-shadow: 0 0 0 4px rgba(47, 153, 74, 0.15);
 }
 
 textarea.input {
@@ -2815,7 +2815,7 @@ textarea.input {
   border-radius: 50%;
   background: var(--accent);
   flex-shrink: 0;
-  box-shadow: 0 0 0 4px rgba(18, 57, 127, 0.12);
+  box-shadow: 0 0 0 4px rgba(47, 153, 74, 0.12);
 }
 
 .footer {
@@ -2918,12 +2918,12 @@ textarea.input {
 .footer__credit a:hover, .footer__credit a:focus-visible { opacity: 0.85; }
 
 /* Section wrapper for the credit below footer */
-.site-credit { padding: 12px 0; background: #a0acac; color: #12397f; }
+.site-credit { padding: 12px 0; background: #9ca3af; color: #074817; }
 .site-credit .footer__credit { color: inherit; }
 
 /* Trainings banner (Treinamentos) */
 .trainings-banner {
-  background: linear-gradient(180deg, #12397f 0%, #0c2859 55%, #06152e 100%);
+  background: linear-gradient(180deg, #06321a 0%, #0b3d22 55%, #041e12 100%);
   color: #ffffff;
   border-bottom: none;
 }
@@ -2961,12 +2961,12 @@ textarea.input {
   transition: transform .2s ease, background .2s ease, border-color .2s ease;
 }
 .trainings-banner__list .nr-item:hover { transform: translateY(-1px); background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.18); }
-  .nr-code {
+.nr-code {
   display: inline-flex; align-items: center; justify-content: center; min-width: 3.2em;
   padding: 6px 8px; border-radius: 10px; font-weight: 800; letter-spacing: .02em; color: #ffffff;
   background: rgba(25,192,215,0.18); border: 1px solid rgba(25,192,215,0.45);
-   background: color-mix(in srgb, var(--accent) 18%, #06152e);
-   border-color: color-mix(in srgb, var(--accent) 50%, #06152e);
+  background: color-mix(in srgb, var(--accent) 18%, #0b3d22);
+  border-color: color-mix(in srgb, var(--accent) 50%, #0b3d22);
 }
 .nr-text { line-height: 1.5; }
 .nr-item--other { grid-template-columns: 1fr; border-style: dashed; border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.04); }
@@ -3245,8 +3245,8 @@ textarea.input {
 }
 
 .page-contato .contact-hero {
-  /* stronger dark blue background for contact page */
-  background: linear-gradient(180deg, #12397f 0%, #0c2859 55%, #06152e 100%);
+  /* stronger dark green background for contact page */
+  background: linear-gradient(180deg, #06321a 0%, #0b3d22 55%, #041e12 100%);
   color: #ffffff;
   border-bottom: none;
   border-radius: 0;
@@ -3270,7 +3270,7 @@ textarea.input {
 
 /* Apply directly (progressive enhancement without extra class) */
 .steps {
-  background: linear-gradient(145deg, #12397f 0%, #0c2859 55%, #06152e 100%);
+  background: linear-gradient(145deg, #174126 0%, #12331d 55%, #0c2214 100%);
 }
 
 .steps .section-heading__title h2,
@@ -3356,6 +3356,3 @@ textarea.input {
 .project-modal.is-open { display: flex; }
 .project-modal__image { max-width: 92vw; max-height: 86vh; border-radius: 10px; box-shadow: 0 24px 64px rgba(0,0,0,0.35); object-fit: contain; }
 .project-modal__close { position: absolute; top: 1rem; right: 1rem; background: transparent; color: #fff; border: 0; font-size: 2rem; line-height: 1; cursor: pointer; }
-
-
-

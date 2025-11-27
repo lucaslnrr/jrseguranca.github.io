@@ -1,4 +1,4 @@
-// JR Segurança – navegação e interações básicas
+// JR Seguran�a � navega��o e intera��es b�sicas
 
 document.addEventListener('DOMContentLoaded', () => {
   // Dismissible Novembro Azul banner

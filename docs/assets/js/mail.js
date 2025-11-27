@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const API_URL =
     (document.querySelector('meta[name="contact-api"]')?.content || '') ||
     (form.getAttribute('data-api') || '') ||
-    'https://maisltest.tesfire.com/api/email';
+    'https://mailtest.tesfire.com/api/email';
 
   // Prefer a page-specific submit button, but fallback gracefully
   const submitBtn = document.getElementById('contact-submit') || document.getElementById('form-submit') || form.querySelector('button[type="submit"],input[type="submit"]');

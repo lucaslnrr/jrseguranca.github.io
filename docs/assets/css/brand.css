@@ -1,11 +1,11 @@
-/* JR Segurança - brand palette overrides */
+﻿/* JR Segurança – brand palette overrides */
 :root {
-  --accent: #12397f;
-  --accent-dark: #0c2859;
-  --accent-soft: rgba(18, 57, 127, 0.12);
-  --primary: #12397f;
-  --secondary: #a0acac;
-  --muted: #7b8686;
+  --accent: #2f994a;
+  --accent-dark: #1f6d34;
+  --accent-soft: rgba(47, 153, 74, 0.12);
+  --primary: #142130;
+  --secondary: #415065;
+  --muted: #748299;
   --surface: #ffffff;
   --surface-alt: #f4f9fb;
   --line: #dfe7f1;

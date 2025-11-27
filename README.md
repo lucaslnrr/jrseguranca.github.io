@@ -1,29 +1,38 @@
 # JR Segurança - Landing Page
 
-Landing page estática para a JR Segurança, com foco em apresentação institucional, serviços de SST e captação de leads.
+Layout responsivo e moderno inspirado na estrutura do site solicitado, com código e conteúdo originais. Use este projeto como base para personalizar cores, textos e imagens da sua empresa. **Todos os arquivos públicos que vão para o GitHub Pages estão dentro da pasta `docs/`.**
 
-## Páginas incluídas (dentro de `docs/`)
-- `docs/index.html` — Landing page principal com hero, serviços e formulário de proposta
-- `docs/servicos.html` — Painel com principais soluções entregues
-- `docs/treinamentos.html` — Catálogo dos treinamentos e NRs atendidos
-- `docs/sobre.html` — Propósito, equipe e diferenciais
-- `docs/contato.html` — Formulário dedicado e canais diretos
+## Páginas incluídas
+- `docs/index.html` — Landing page com hero, serviços, sobre, logos e CTA
+- `docs/servicos.html` — Visão geral de serviços e ofertas
+- `docs/treinamentos.html` — Lista de treinamentos (NRs)
+- `docs/sobre.html` — Sobre a empresa
+- `docs/contato.html` — Formulário de contato
 
-## Estrutura
-- Cabeçalho fixo com navegação responsiva e menu mobile
-- Componentes reutilizáveis em `docs/assets/css/styles.css` e `docs/assets/js/main.js`
-- Branding separado em `docs/assets/css/brand.css` para ajustes rápidos de cores e fontes
-- Recursos estáticos (imagens, PDFs e scripts auxiliares) organizados sob `docs/`
+## Seções incluídas na landing (index)
+- Topbar com contato e redes sociais
+- Cabeçalho fixo com navegação (menu mobile + link ativo)
+- Hero com título, subtítulo e CTAs
+- Grade de serviços (cards)
+- Seção "Sobre" com checklist
+- Logotipos de clientes/parceiros
+- CTA de newsletter
+- Rodapé com contato e links
 
-## Como personalizar
-1. Atualize textos diretamente nos arquivos `.html` dentro de `docs/`.
-2. Ajuste cores, espaçamentos e tipografia nas variáveis de `docs/assets/css/styles.css`.
-3. Use `docs/assets/css/brand.css` para sobrescrever a paleta da JR Segurança sem afetar o restante do tema.
-4. Substitua as imagens em `docs/assets/img/`, mantendo os mesmos nomes ou atualize os caminhos nos HTMLs.
+## Como usar
+Abra o arquivo `docs/index.html` no navegador. Não há dependências externas.
 
-## Hospedagem
-- O repositório `jrseguranca.github.io` publica via GitHub Pages usando o diretório `docs/` como fonte.
-- O arquivo `docs/CNAME` mantém o domínio personalizado `www.jrseguranca.com` e `docs/.nojekyll` garante que o Jekyll não processe os arquivos estáticos.
+## Personalização rápida
+- Cores: edite variáveis em `docs/assets/css/styles.css` (ex: `--brand`)
+- Tipografia e espaçamentos: também em `styles.css`
+- Textos e links: edite diretamente `docs/index.html`
+- Logo e imagens: substitua marcadores por imagens reais em `docs/assets/img/`
+ - Navegação: os links já apontam para as páginas internas; ajuste nomes conforme necessário
 
-## Direitos autorais
-Todo o layout, cópia e código foram produzidos exclusivamente para a JR Segurança e podem ser adaptados conforme necessário.
+## Branding com seu PDF
+- Ajuste a paleta e cantos em `docs/assets/css/brand.css` (este arquivo sobrescreve as variáveis padrões de `styles.css`).
+- Use `brand-preview.html` para testar cores e copiar o snippet gerado para dentro do `brand.css`.
+- Para fontes, substitua `--font-sans` pelo nome da fonte do seu PDF e adicione um `@font-face` se tiver arquivos `.woff2`.
+
+## Observações de direitos autorais
+Este projeto não copia código, textos ou imagens do site de referência. É um layout original inspirado apenas em sua estrutura público-visível.
